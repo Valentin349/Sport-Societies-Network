@@ -1,5 +1,26 @@
 # Sport-Socienties-Network
 
+## virtual environment (setup)
+It is recommended to run this program and install its libraries inside a venv virtual environment, this can be set up with the command below 
+```shell
+python -m venv webenv
+```
+note: if working on this project the environment fileneame webenv should be used as it is in the gitignore file
+
+## virtual environment (running)
+The virtual environment can be run in command line with the following command
+```shell
+.\webenv\scripts\activate.bat
+```
+The virtual environment can be run in powershell with the following command
+```shell
+.\webenv\scripts\activate.ps1
+```
+## setting up
+To first run this project you will need to install the required libraries using the command below
+```shell
+pip install -r requirements.txt
+```
 ## development
 ### django server
 Everytime you are working on this project, most of the time you will require the server running localy. To do this run the following command in while being in the following directory .\Sport-Socienties-Network\spector\
