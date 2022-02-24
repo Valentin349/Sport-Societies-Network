@@ -1,4 +1,4 @@
-# Sport-Socienties-Network
+# Sport-Societies-Network
 
 ## Virtual Environment
 It is recommended to run this program and install its libraries inside a venv virtual environment
@@ -8,7 +8,7 @@ Run all the commands for this Virtual Environment section whilst being in .\Spor
 ```powershell
 python -m venv webenv
 ```
-> note - if working on this project, the environment fileneame webenv should be used as it is in the gitignore file
+> If working on this project, the environment fileneame webenv should be used as it is in the gitignore file
 
 ### Running the virtual environment
 For *command line*:
@@ -24,12 +24,14 @@ Now that the virtual environment is running you need to install the specific ver
 ```powershell
 pip install -r requirements.txt
 ```
+> After setting up the virtual environment with these 3 steps, running the activate file (see [above](#running-the-virtual-environment)) is all that is required to run the virtual environment in the future
 ## Development
 ### Django Server
 Everytime you are working on this project, most of the time you will require the server running locally. To do this run the following command whilst being in the following directory .\Sport-Socienties-Network\spector\
 ```powershell
 python manage.py runserver
 ```
+> Make sure you are running the virtual environment before running this command
 ### Webpack Dev Mode
 With the server running locally you can view the app by going to http://127.0.0.1:8000/
 
