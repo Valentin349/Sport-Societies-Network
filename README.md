@@ -26,6 +26,17 @@ pip install -r requirements.txt
 ```
 > After setting up the virtual environment with these 3 steps, running the activate file (see [above](#running-the-virtual-environment)) is all that is required to run the virtual environment in the future
 ## Development
+After cloning the repo and setting up webenv there are two commands you need to run
+1. Run this whilst inside .\Sport-Socienties-Network\spector
+```powershell
+python manage.py migrate
+```
+2. And run this whilst inside .\Sport-Socienties-Network\spector\frontend
+> This installs the neccessary node dependencies specified in package-lock.json
+```powershell
+npm ci
+```
+
 ### Django Server
 Everytime you are working on this project, most of the time you will require the server running locally. To do this run the following command whilst being in the following directory .\Sport-Socienties-Network\spector\
 ```powershell
@@ -36,7 +47,9 @@ python manage.py runserver
 With the server running locally you can view the app by going to http://127.0.0.1:8000/
 
 
-If you are working on any react/JS code, make sure you are in .\Sport-Socienties-Network\spector\frontend\ and run
+For those working on any React/JS code:
+1. Make sure you are in .\Sport-Socienties-Network\spector\frontend
+2. Then run
 ```powershell
 npm run dev
 ```
@@ -45,7 +58,7 @@ This will run webpack in dev mode allowing you to make changes to the front end 
 
 Front end dev setup:
 1. Run `npm run dev` in a terminal window
-2. In a separate terminal window run `python manage.py runserver` with virtual environment running
+2. In a separate terminal window, with virtual environment running, run `python manage.py runserver` 
 3. Open local host - http://127.0.0.1:8000/
 4. Edit react code and save
 5. Reload http://127.0.0.1:8000/ to see the changes
