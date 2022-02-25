@@ -41,6 +41,14 @@ If you are working on any react/JS code, make sure you are in .\Sport-Socienties
 npm run dev
 ```
 This will run webpack in dev mode allowing you to make changes to the front end and see if the code compiles correctly. It will check for any runtime errors.
+
+
+Front end dev setup:
+1. Run `npm run dev` in a terminal window
+2. In a separate terminal window run `python manage.py runserver` with virtual environment running
+3. Open local host - http://127.0.0.1:8000/
+4. Edit react code and save
+5. Reload http://127.0.0.1:8000/ to see the changes
 ### Updates to views or models
 If any changes to a view or model has been made in any app you have to create migrations. Run the following commands whilst being in the .\Sport-Socienties-Network\spector\ directory
 ```powershell
