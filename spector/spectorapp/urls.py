@@ -1,19 +1,13 @@
-from django.urls import path
-from django.urls import admin
+from django.urls import path, include
+from rest_framework.routers import SimpleRouter
 from . import views
 
-
+router = SimpleRouter()
+router.register(r'activities', views.ActivityViewSet)
+router.register(r'sports', views.SportsViewSet)
 
 urlpatterns =[
-
-
-# rename path and __view__ to the view name and url path (serializer needed for view)
-    #path('', __view__.as_view()),
-    path('admin/', admin.site.urls)
-    
-
-
-
+    path('', include(router.urls))
 ] 
     
 

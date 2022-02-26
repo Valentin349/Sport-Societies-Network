@@ -1,10 +1,17 @@
 from rest_framework import serializers
+from .models import UserData, Sports, Activity
 
-from .models import userData
-
-class userDataSerializer(serializers.ModelSerializer):
+class UserDataSerializer(serializers.ModelSerializer):
     class Meta:
-        model = userData
+        model = UserData
         fields = '__all__'
 
-        
+class SportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sports
+        fields = '__all__'
+
+class ActivitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Activity
+        fields = '__all__'       

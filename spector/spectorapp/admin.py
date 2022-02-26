@@ -1,8 +1,11 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import userData
+from .models import UserData, Sports, Activity
 
-class userAdmin(admin.ModelAdmin):
+class UserAdmin(admin.ModelAdmin):
     list_display = ("name","bio","age")
-admin.site.register(userData, userAdmin)
+
+admin.site.register(UserData, UserAdmin)
+admin.site.register(Sports)
+admin.site.register(Activity)
