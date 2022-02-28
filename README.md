@@ -19,6 +19,10 @@ For *powershell*:
 ```powershell
 .\webenv\scripts\activate.ps1
 ```
+For *macOS*
+```source
+webenv/bin/activate
+```
 ### Installing project dependenices
 Now that the virtual environment is running you need to install the specific versions of the project dependenices using the following command
 ```powershell
