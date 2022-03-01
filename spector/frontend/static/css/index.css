@@ -1,6 +1,6 @@
 /*----------- CSS goes here -----------*/
 
-.NavBarItems{
+.NavBarItems {
     background: linear-gradient(90deg, rgb(110,94,254) 0%, rgba(73,63,252,1) 100%);
     height: 80px;
 
@@ -21,10 +21,15 @@
     margin-right: 2rem;
 }
 
-.nav-links{
+.nav-links {
     color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
+}
+
+.active {
+    background-color: #2003ad;
+    border-radius: 4px;
 }
 
 .nav-links:hover {
@@ -32,7 +37,6 @@
     border-radius: 4px;
     transition: all 0.2s ease-out;
 }
-
 
 :root {
     --primary: #3acbf7;
