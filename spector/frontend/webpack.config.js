@@ -7,6 +7,13 @@ module.exports = {
     path: path.resolve(__dirname, "./static/frontend"),
     filename: "[name].js",
   },
+  resolve: {
+    extensions: [".js"],
+    alias: {
+      components: path.resolve(__dirname, "src/components"),
+      css: path.resolve(__dirname, "css"),
+    },
+  },
   module: {
     rules: [
       {
@@ -15,6 +22,10 @@ module.exports = {
         use: {
           loader: "babel-loader",
         },
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
