@@ -11,16 +11,14 @@ python -m venv webenv
 > If working on this project, the environment fileneame webenv should be used as it is in the gitignore file
 
 ### Running the virtual environment
-For *command line*:
 ```shell
+# Command Line
 .\webenv\scripts\activate.bat
-```
-For *powershell*:
-```powershell
+
+# Powershell
 .\webenv\scripts\activate.ps1
-```
-For *macOS*
-```
+
+# macOS
 source webenv/bin/activate
 ```
 ### Installing project dependenices
