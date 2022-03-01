@@ -74,3 +74,13 @@ python manage.py migrate
 ```
 ### Adding react code
 All the react components are in .\Sport-Socienties-Network\spector\frontend\src\components. The main App is in App.js and all other components must be linked to the main app. Stick to a functional style as it will make things easier. Components that need to be reused make sure they are in their own JavaScript file inside the components folder. Have a look at App.Js and Index.Js to see how to import and export JS funcitons if you are unfamiliar.
+
+## APIs
+All API endpoints return JSON data. To check the format of the json object check the admin page.
+#### /api/userdata
+Returns all user objects. Will be changed to allow to access individual users and include permisions and authentication.
+Name is likely to change slightly too.
+#### /api/sports
+Returns all sports objects.
+#### /api/activities/"id"
+Returns the activity object of the given id. If id is not supplied it will return all activity objects. Will be able to filter by sport but not implemented yet.
