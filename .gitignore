@@ -1,4 +1,6 @@
 webenv
+spector/frontend/static/frontend/main.js
+spector/frontend/static/frontend/main.js.LICENSE.txt
 
 ### VisualStudioCode ###
 .vscode/*
