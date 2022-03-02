@@ -5,6 +5,7 @@ import NavBar from "./components/common/navbar/NavBar";
 import Home from "./routes/home";
 import SportsList from "./routes/sportsList";
 import Sports from "./routes/sports";
+import Profile from "./routes/profile";
 
 // react renderer
 ReactDOM.render(
@@ -14,6 +15,7 @@ ReactDOM.render(
       <Route path="/" element={<Home />} />
       <Route path="sports" element={<SportsList />} />
       <Route path="sports/:sportName" element={<Sports />} />
+      <Route path="profile/:username" element={<Profile />} />
       <Route
         path="*"
         element={
