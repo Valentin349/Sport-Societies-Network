@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'spectorapp.apps.SpectorappConfig',
     'frontend.apps.FrontendConfig',
     'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

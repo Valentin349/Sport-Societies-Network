@@ -9,7 +9,6 @@ router.register(r'sports', views.SportsViewSet)
 router.register(r'userdata', views.UserDataViewSet )
 
 urlpatterns =[
-    path('admin/', admin.site.urls),
     path('', include(router.urls)),
 ] 
     
