@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 
 const Sports = () => {
   let { sportName } = useParams();
-  console.log(sportName);
+
+  // Api fetch/call to get sport info (events)
 
   return (
     <main>

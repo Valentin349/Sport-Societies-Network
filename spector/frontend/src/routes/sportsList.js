@@ -5,8 +5,10 @@ const SportsList = () => {
   let navigate = useNavigate();
 
   return (
-    // CSS Grid of buttons
-    // onClick -> useNavigate to sports/____
+    // Fetch a list of sports
+    // Create a CSS grid of buttons like below using map?
+    // Make the <button> part into a componenet
+
     <main>
       <h2>Sports Page</h2>
       <button
