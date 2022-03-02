@@ -1,9 +1,13 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const Sports = () => {
+  let { sportName } = useParams();
+  console.log(sportName);
+
   return (
     <main>
-      <h2>Sports Page</h2>
+      <h2>Welcome to the {sportName} page</h2>
     </main>
   );
 };

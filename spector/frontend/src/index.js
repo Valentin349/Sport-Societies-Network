@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/common/navbar/NavBar";
 import Home from "./routes/home";
+import SportsList from "./routes/sportsList";
 import Sports from "./routes/sports";
 
 // react renderer
@@ -11,7 +12,8 @@ ReactDOM.render(
     <NavBar />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="sports" element={<Sports />} />
+      <Route path="sports" element={<SportsList />} />
+      <Route path="sports/:sportName" element={<Sports />} />
       <Route
         path="*"
         element={
