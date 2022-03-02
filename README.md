@@ -80,5 +80,7 @@ Returns all user objects. Will be changed to allow to access individual users an
 Name is likely to change slightly too.
 #### /api/sports
 Returns all sports objects.
-#### /api/activities/"id"
-Returns the activity object of the given id. If id is not supplied it will return all activity objects. Will be able to filter by sport but not implemented yet.
+#### /api/activities
+Returns the activity objects. If filtering can be applied to select certain activities or left to get all activities.
+* __/api/activities?sport=[Sport Name]__ will return all activities of the given sport.
+* __/api/activities?id=[id number]__ will return the activity associated with the given id.
