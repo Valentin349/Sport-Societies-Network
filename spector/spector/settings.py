@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'spectorapp.apps.SpectorappConfig',
     'frontend.apps.FrontendConfig',
     'rest_framework',
+    'rest_framework.authtoken',
     'django_filters',
 ]
 
@@ -75,12 +76,12 @@ WSGI_APPLICATION = 'spector.wsgi.application'
 
 REST_FRAMEWORK = {
      'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+         'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication', 
     ],
-     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ]
+    'DEFAULT_PERMISSION_CLASSES': (
+       'rest_framework.permissions.IsAuthenticated',
+    ),
 }
 
 

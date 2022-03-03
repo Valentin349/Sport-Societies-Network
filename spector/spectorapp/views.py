@@ -3,6 +3,7 @@ from rest_framework import mixins, viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import UserData, Sports, Activity
 from .serializers import UserDataSerializer, SportSerializer, ActivitySerializer
+from rest_framework import permissions
 
 # Create your views here.
 class SportsViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
@@ -19,3 +20,4 @@ class ActivityViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
 class UserDataViewSet(viewsets.ModelViewSet):
     queryset = UserData.objects.all()
     serializer_class = UserDataSerializer
+    ##permission_classes = [permissions.IsAuthenticated]
