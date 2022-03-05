@@ -12,6 +12,13 @@
   font-size: 1.2rem;
 }
 
+.navbar-logo {
+  color: white;
+  text-decoration: none;
+  padding: 1rem 0.5rem;
+  font-size: 40px;
+}
+
 .NavBar-Menu {
   display: grid;
   grid-template-columns: repeat(3, auto);
