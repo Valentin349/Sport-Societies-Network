@@ -10,13 +10,12 @@ class SportsViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
     queryset = Sports.objects.all()
     serializer_class = SportSerializer
 
-class ActivityViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
+class ActivityViewSet(viewsets.ModelViewSet):
     queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = ['sport', 'id']
     
-
 class UserDataViewSet(viewsets.ModelViewSet):
     queryset = UserData.objects.all()
     serializer_class = UserDataSerializer
