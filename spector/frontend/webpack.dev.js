@@ -45,10 +45,10 @@ module.exports = merge(common, {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      // template: "./src/template.html",
-      inject: "body",
-    }),
-  ],
+  // plugins: [
+  //   new HtmlWebpackPlugin({
+  //     // template: "./src/template.html",
+  //     inject: "body",
+  //   }),
+  // ],
 });
