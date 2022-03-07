@@ -19,6 +19,7 @@ class ActivityViewSet(viewsets.ModelViewSet):
     serializer_class = ActivitySerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = ['sport', 'id']
+    permission_classes = [AdminAuthor_elseReadonly]
     
 
 class ProfileViewSet(viewsets.ModelViewSet):
