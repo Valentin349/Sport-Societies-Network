@@ -6,7 +6,7 @@ from django.contrib import admin
 router = SimpleRouter()
 router.register(r'activities', views.ActivityViewSet)
 router.register(r'sports', views.SportsViewSet)
-router.register(r'profile', views.ProfileViewSet )
+router.register(r'profile', views.ProfileViewSet)
 
 urlpatterns =[
     path('register/', views.CreateUserView.as_view()),

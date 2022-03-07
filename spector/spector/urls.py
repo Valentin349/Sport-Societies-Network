@@ -21,4 +21,5 @@ urlpatterns = [
     path('api/', include('spectorapp.urls')),
     path('', include('frontend.urls')),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+    path('api-auth/', include('rest_framework.urls')),
 ]
