@@ -1,28 +1,29 @@
 const path = require("path");
-const webpack = require("webpack");
+const { merge } = require("webpack-merge");
+const common = require("./webpack.common.js");
 
-module.exports = {
-  entry: "./src/index.js",
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = merge(common, {
+  mode: "development",
   output: {
     path: path.resolve(__dirname, "./static/frontend"),
     filename: "[name].js",
+
+    //path: path.resolve(__dirname, "dist"),
+    //filename: "[name].bundle.js",
   },
-  resolve: {
-    extensions: [".js"],
-    alias: {
-      components: path.resolve(__dirname, "src/components"),
-      css: path.resolve(__dirname, "src/css"),
+  devtool: "inline-source-map",
+  devServer: {
+    devMiddleware: {
+      writeToDisk: true,
+    },
+    static: {
+      directory: path.join(__dirname, "static/frontend"),
     },
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
-      },
       {
         test: /\.css$/,
         use: [
@@ -44,15 +45,10 @@ module.exports = {
       },
     ],
   },
-  optimization: {
-    minimize: true,
-  },
   plugins: [
-    new webpack.DefinePlugin({
-      "process.env": {
-        // This has effect on the react lib size
-        NODE_ENV: JSON.stringify("development"),
-      },
+    new HtmlWebpackPlugin({
+      // template: "./src/template.html",
+      inject: "body",
     }),
   ],
-};
+});
