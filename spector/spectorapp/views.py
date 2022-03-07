@@ -3,8 +3,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from django_filters.rest_framework import DjangoFilterBackend
-from .models import UserData, Sports, Activity
-from .serializers import UserDataSerializer, SportSerializer, ActivitySerializer, UserSerializer
+from .models import Profile, Sports, Activity
+from .serializers import ProfileSerializer, SportSerializer, ActivitySerializer
+from rest_framework import permissions
 
 # Create your views here.
 class SportsViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
@@ -17,9 +18,10 @@ class ActivityViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filter_fields = ['sport', 'id']
     
-class UserDataViewSet(viewsets.ModelViewSet):
-    queryset = UserData.objects.all()
-    serializer_class = UserDataSerializer
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
     ##permission_classes = [permissions.IsAuthenticated]
 
 class CreateUserView(APIView):

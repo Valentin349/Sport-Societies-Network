@@ -1,11 +1,9 @@
 from rest_framework import serializers
-from rest_framework.validators import UniqueValidator
-from .models import UserData, Sports, Activity
-from django.contrib.auth.models import User
+from .models import Profile, Sports, Activity
 
-class UserDataSerializer(serializers.ModelSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserData
+        model = Profile
         fields = '__all__'
 
 class SportSerializer(serializers.ModelSerializer):
