@@ -15,6 +15,9 @@ module.exports = merge(common, {
   },
   devtool: "inline-source-map",
   devServer: {
+    devMiddleware: {
+      writeToDisk: true,
+    },
     static: {
       directory: path.join(__dirname, "static/frontend"),
     },
@@ -49,5 +52,3 @@ module.exports = merge(common, {
     }),
   ],
 });
-
-//TODO - CSS Modules

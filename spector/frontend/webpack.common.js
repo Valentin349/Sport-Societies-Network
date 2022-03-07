@@ -3,6 +3,7 @@ const path = require("path");
 module.exports = {
   entry: "./src/index.js",
   resolve: {
+    extensions: [".js"],
     alias: {
       components: path.resolve(__dirname, "src/components"),
       css: path.resolve(__dirname, "src/css"),
