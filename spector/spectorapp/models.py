@@ -1,11 +1,13 @@
+from tkinter import CASCADE
 from django.db import models
 from django.forms import CharField
 
 # Create your models here.
-class UserData(models.Model):
+class Profile(models.Model):
     name = models.CharField(max_length=30)
     bio = models.CharField(max_length=100)
     age = models.IntegerField(default=18)
+    owner = models.ForeignKey('auth.user', related_name='userprofile', on_delete=models.CASCADE)
     def __str__(self):
         return self.name
 
