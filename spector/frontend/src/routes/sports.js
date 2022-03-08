@@ -20,29 +20,27 @@ const Sports = () => {
       
       <ul className="socPageLayout">
 
+        <div className="socIndividualBox">
+          Details
+          ...
+        </div>
+
         <li>
           <ul className="socIndividualBox">
             {data.map((item, index) => (
               <ul key={index}>
-                <li>{item.name}</li>
-                <li>{item.description}</li>
-                <li>{item.sport}</li>
-                <li>{item.id}</li>
+                <div className="socActivityBox">
+                  <li>{item.name}</li>
+                  {/* <li>{item.description}</li> */}
+                  {/* <li>{item.sport}</li> */}
+                  {/* <li>{item.id}</li> */}
+                </div>
               </ul>
             ))}
           </ul>
         </li>
 
-        <div className="socIndividualBox">
-          Activities
-          <li className="socActivityBox">
-            Activity 1
-          </li>
-
-          <li className="socActivityBox">
-            Activity 2
-          </li>
-        </div>
+        
         
 
       </ul>
