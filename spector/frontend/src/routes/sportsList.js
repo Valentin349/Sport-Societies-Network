@@ -1,29 +1,27 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { SportsListMenuItems } from "./SportsListMenuItems";
+import { Link } from "react-router-dom";
 import "css/sportsList.css";
+import useFetch from "../hooks/useFetch";
 
 const SportsList = () => {
-  let navigate = useNavigate();
+  const { isLoaded, data, message } = useFetch("/api/sports/");
+
+  if (!isLoaded) {
+    return message;
+  }
 
   return (
-    // Fetch a list of sports
-    // Create a CSS grid of buttons like below using map?
-    // Make the <button> part into a componenet
-
     <nav className="SportsListItems">
       <h2 className="titlesfs">Sports Page</h2>
 
       <ul className="sportslist-menu">
-        {SportsListMenuItems.map((item, index) => {
-          return (
-            <li key={index}>
-              <Link to={item.url} className={item.cName}>
-                {item.title}
-              </Link>
-            </li>
-          );
-        })}
+        {data.map((item, index) => (
+          <li key={index}>
+            <Link to={item.name} className="sportslist-links">
+              {item.name}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );
