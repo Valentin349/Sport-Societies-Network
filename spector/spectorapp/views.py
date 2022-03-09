@@ -1,10 +1,11 @@
-from rest_framework import mixins, viewsets, permissions, status, AdminAuthor_elseReadonly
+from rest_framework import mixins, viewsets, permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Profile, Sports, Activity
 from .serializers import ProfileSerializer, SportSerializer, ActivitySerializer, UserSerializer
+from .permissions import AdminAuthor_elseReadonly
 
 
 # Create your views here.
