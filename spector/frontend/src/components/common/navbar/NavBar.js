@@ -1,13 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Button from "../Button";
+import Button from "../button";
 import { MenuItems } from "./MenuItems";
 import "css/components/NavBar.css";
 
 const NavBar = () => {
   return (
     <nav className="NavBar-Items">
-      <h1 className="navbar-logo">Spector</h1> {/*FIXME - where is the logo?*/}
+      <h1 className="navbar-logo">Spector</h1>
       <ul className="NavBar-Menu">
         {MenuItems.map((item, index) => (
           <li key={index}>
