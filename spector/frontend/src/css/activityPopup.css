@@ -8,14 +8,12 @@
 /* } */
 
 .button {
-  /* font-family: "Roboto", Arial, sans-serif; */
   color: #000000;
   cursor: pointer;
   padding: 0px 30px;
   display: inline-block;
-  margin: 10px 15px;
-  /* margin: 0 auto; */
-  text-align: left;
+  margin: 5px 0px;
+  /*text-align: left;*/
   line-height: 2em;
   letter-spacing: 1.5px;
   font-size: 1em;
@@ -26,7 +24,7 @@
   background-color: #ffffff;
   border-radius: 15px 15px 15px 15px;
   transition: all 0.3s;
-  /* width: 150%; */
+  width: 100%;
 }
 
 .button:hover,
@@ -82,10 +80,6 @@
 }
 .modal > .actions {
   margin: auto;
-}
-.modal > .actions {
-  width: 100%;
-  padding: 10px 5px;
   text-align: center;
 }
 
