@@ -1,3 +1,4 @@
+from cgitb import lookup
 from rest_framework import mixins, viewsets, permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -6,7 +7,10 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Profile, Sports, Activity
 from .serializers import ProfileSerializer, SportSerializer, ActivitySerializer, UserSerializer
 from .permissions import AdminAuthor_elseReadonly
-
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 class SportsViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
@@ -25,3 +29,10 @@ class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = [AdminAuthor_elseReadonly]
+    lookup_field = "owner"
+
+class CustomObtainAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
+        token = Token.objects.get(key=response.data['token'])
+        return Response({'token': token.key, 'id': token.user_id})
