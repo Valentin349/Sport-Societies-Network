@@ -16,20 +16,19 @@
 .socPageLayout {
   display: grid;
   grid-template-columns: repeat(2, auto);
-  grid-gap: 10px 4vw;
+  grid-gap: 0px 10px;
   list-style: none;
+  padding-right: 40px;
 }
 
 .socIndividualBox {
+  padding: 10px;
   font-size: 25px;
   background-color: white;
   outline: 2px solid #bfb3ff;
   border-radius: 20px;
   color: #aa99ff;
   list-style: none;
-  width: 50%;
-  padding: 20px;
-  padding-right: 20vw;
 }
 
 .socActivityBox {
@@ -37,10 +36,10 @@
   font-size: 20px;
   color: #aa99ff;
   outline: 2px solid #aa99ff;
-  width: 150%;
+  /* width: 150%;
   margin: 10px;
   border-radius: 40px;
-  padding: 20px;
+  padding: 1vw; */
   list-style: none;
 }
 
