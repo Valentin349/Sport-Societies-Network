@@ -23,9 +23,8 @@
   border: 2px solid #aa99ff;
   background-color: #ffffff;
   border-radius: 15px 15px 15px 15px;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  width: 100%;
+  /* width: 150%; */
 }
 
 .button:hover,
@@ -96,7 +95,8 @@
   font-size: 24px;
   background: #ffffff;
   border-radius: 18px;
-  border: 3px solid #cfcece;
+  border: 2px solid #aa99ff;
+  transition: all 0.3s;
 }
 .modal > .close:hover {
   border-color: #2980b9;
