@@ -10,6 +10,7 @@ router.register(r'profile', views.ProfileViewSet)
 
 urlpatterns =[
     path('register/', views.CreateUserView.as_view()),
+    path('login/', views.CustomObtainAuthToken.as_view()),
     path('', include(router.urls)),
 ] 
     
