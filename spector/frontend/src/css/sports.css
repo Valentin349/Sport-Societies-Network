@@ -1,59 +1,57 @@
 .SportPageItems {
-    background-color: whitesmoke;
-    padding-top: 5px;
-    padding-bottom: 20px;
-    margin-top: 20px;
-    border-radius: 27px;
-    outline: 2px ridge #bfb3ff;
+  background-color: whitesmoke;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 27px;
+  outline: 2px ridge #bfb3ff;
 }
 
-.socSportPageTitle{
-    margin-left: 30px;
-    color: #aa80ff;
-    font-size: 30px;
+.socSportPageTitle {
+  margin-left: 30px;
+  color: #aa80ff;
+  font-size: 30px;
 }
 
-.socPageLayout{
-    display: grid;
-    grid-template-columns: repeat(2,auto);
-    grid-gap: 10px 4vw;
-    list-style: none;
+.socPageLayout {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 0px 10px;
+  list-style: none;
+  padding-right: 40px;
 }
 
-.socIndividualBox{
-    font-size: 25px;
-    background-color: white;
-    outline: 2px solid #bfb3ff;
-    border-radius: 20px;
-    color: #AA99FF;
-    list-style: none;
-    width: 50%;
-    padding: 20px;
-    padding-right: 20vw;
+.socIndividualBox {
+  padding: 10px;
+  font-size: 25px;
+  background-color: white;
+  outline: 2px solid #bfb3ff;
+  border-radius: 20px;
+  color: #aa99ff;
+  list-style: none;
 }
 
-.socActivityBox{
-    background-color: white;
-    font-size: 20px;
-    color: #AA99FF;
-    outline: 2px solid #AA99FF;
-    width: 150%;
-    margin: 10px;
-    border-radius: 40px;
-    padding: 20px;
-    list-style: none;
+.socActivityBox {
+  background-color: white;
+  font-size: 20px;
+  color: #aa99ff;
+  outline: 2px solid #aa99ff;
+  /* width: 150%;
+  margin: 10px;
+  border-radius: 40px;
+  padding: 1vw; */
+  list-style: none;
 }
 
-.socActivityBox:hover{
-    background-color: #AA99FF;
-    font-size: 20px;
-    color: white;
-    outline: 2px solid white;
-    width: 150%;
-    margin: 10px;
-    border-radius: 40px;
-    padding: 20px;
-    list-style: none;
-    transition: all 0.1s ease-out;
+.socActivityBox:hover {
+  background-color: #aa99ff;
+  font-size: 20px;
+  color: white;
+  outline: 2px solid white;
+  width: 150%;
+  margin: 10px;
+  border-radius: 40px;
+  padding: 20px;
+  list-style: none;
+  transition: all 0.1s ease-out;
 }
-

@@ -1,0 +1,119 @@
+/* .example-warper { */
+/*   width: 100%; */
+/*   padding: 20px 5%; */
+/*   display: flex; */
+/*   justify-content: space-around; */
+/*   flex-wrap: wrap; */
+/*   border: 1px #cfcece dashed; */
+/* } */
+
+.button {
+  color: #000000;
+  cursor: pointer;
+  padding: 0px 30px;
+  display: inline-block;
+  margin: 5px 0px;
+  /*text-align: left;*/
+  line-height: 2em;
+  letter-spacing: 1.5px;
+  font-size: 1em;
+  outline: none;
+  position: relative;
+  font-size: 14px;
+  border: 2px solid #aa99ff;
+  background-color: #ffffff;
+  border-radius: 15px 15px 15px 15px;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.button:hover,
+.button.hover {
+  border-color: #2980b9;
+}
+
+.card {
+  font-size: 12px;
+}
+.card > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 14px;
+  text-align: center;
+}
+
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 50%;
+  padding: 5px;
+}
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+[role="tooltip"].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup="tooltip"].popup-overlay {
+  background: transparent;
+}
+
+.modal {
+  font-size: 12px;
+  /* background-color: rgba(0, 0, 0, 0.25); */
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px 1px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 1px;
+}
+.modal > .actions {
+  margin: auto;
+  text-align: center;
+}
+
+/* X close button */
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 2px solid #aa99ff;
+  transition: all 0.3s;
+}
+.modal > .close:hover {
+  border-color: #2980b9;
+}
+
+.menu {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+.menu-item {
+  cursor: pointer;
+  padding: 5px;
+  height: 28px;
+  border-top: 1px solid rgb(187, 187, 187);
+}
+.menu-item:hover {
+  color: #2980b9;
+}
