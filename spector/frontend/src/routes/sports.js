@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-// import useFetch from "../hooks/useFetch";
-import useFetch from "../hooks/useFetchAsync";
+import useFetch from "../hooks/useFetch";
+// import useFetch from "../hooks/useFetchAsync";
 import "css/sports.css";
 import ActivityPopup from "../components/common/activityPopup";
 
@@ -21,14 +21,13 @@ const Sports = () => {
       <h2 className="socSportPageTitle">Welcome to the {sportName} page</h2>
 
       <ul className="socPageLayout">
-        { /* Detail box */ }
+        {/* Detail box */}
         <div className="socIndividualBox">Details ...</div>
 
-
-        { /* Activities box */ }
+        {/* Activities box */}
         <li>
-          <ul className="socIndividualBox">Events...
-
+          <ul className="socIndividualBox">
+            Events...
             {data.map((item, index) => (
               <li key={index}>
                 <ActivityPopup {...item} />
