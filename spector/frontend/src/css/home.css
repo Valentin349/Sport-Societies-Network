@@ -1,0 +1,43 @@
+.homePageOuter{
+    background-color: whitesmoke;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 27px;
+    outline: 2px ridge #bfb3ff;
+}
+
+.homePageTitle{
+    margin-left: 30px;
+    color: #aa80ff;
+    font-size: 30px;
+}
+
+.homePageNotificationLayout{
+    list-style: none;
+    margin-left: 25px;
+}
+
+.homepageNotification{
+    font-size: 25px;
+    background-color: white;
+    outline: 2px solid #bfb3ff;
+    border-radius: 20px;
+    color: #AA99FF;
+    list-style: none;
+    width: 75%;
+    padding: 20px;
+    padding-right: 20vw;
+}
+
+.homepageNotification:hover{
+    font-size: 25px;
+    background-color: #bfb3ff;
+    outline: 2px solid white;
+    border-radius: 20px;
+    color: white;
+    list-style: none;
+    width: 75%;
+    padding: 20px;
+    padding-right: 20vw;
+}

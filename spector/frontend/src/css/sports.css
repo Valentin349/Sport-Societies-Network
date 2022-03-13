@@ -43,15 +43,15 @@
   list-style: none;
 }
 
-.socActivityBox:hover {
-  background-color: #aa99ff;
-  font-size: 20px;
-  color: white;
-  outline: 2px solid white;
-  width: 150%;
-  margin: 10px;
-  border-radius: 40px;
-  padding: 20px;
-  list-style: none;
-  transition: all 0.1s ease-out;
+.socActivityBox:hover{
+    background-color: #bfb3ff;
+    font-size: 20px;
+    color: white;
+    outline: 2px solid white;
+    width: 150%;
+    margin: 10px;
+    border-radius: 40px;
+    padding: 20px;
+    list-style: none;
+    transition: all 0.1s ease-out;
 }
