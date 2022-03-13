@@ -60,6 +60,9 @@ ActivityPopup.propTypes = {
   startTime: PropTypes.string,
   creationTime: PropTypes.string,
   duration: PropTypes.string,
+  maxMembers: PropTypes.number,
+  owner: PropTypes.number,
+  members: PropTypes.array,
 };
 
 export default ActivityPopup;
