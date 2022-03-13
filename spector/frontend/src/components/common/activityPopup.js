@@ -13,7 +13,8 @@ const ActivityPopup = (props) => {
       trigger={
         <button className="button">
           {/* {props.name} */}
-          {props.name} || {new Date(props.dateTime).toLocaleString()}
+          {props.name} || {new Date(props.startTime).toLocaleString()} ||{" "}
+          {props.duration}
         </button>
       }
       modal
@@ -27,19 +28,22 @@ const ActivityPopup = (props) => {
           <div className="content">
             {props.description}
             <br />
-            {props.dateTime}
+            {props.startTime}
             <br />
-            {new Date(props.dateTime).toUTCString()}
+            {new Date(props.startTime).toUTCString()}
             <br />
-            {new Date(props.dateTime).toDateString()}
+            {new Date(props.startTime).toDateString()}
             <br />
-            {new Date(props.dateTime).toTimeString()}
+            {new Date(props.startTime).toTimeString()}
             <br />
-            {new Date(props.dateTime).toLocaleString()}
+            {new Date(props.startTime).toLocaleString()}
             <br />
-            {new Date(props.dateTime).toLocaleDateString()}
+            {new Date(props.startTime).toLocaleDateString()}
             <br />
-            {new Date(props.dateTime).toLocaleTimeString()}
+            {new Date(props.startTime).toLocaleTimeString()}
+            <br />
+            <br />
+            {props.creationTime}
           </div>
           <div className="actions">
             <button className="button">Join</button>
@@ -53,7 +57,12 @@ const ActivityPopup = (props) => {
 ActivityPopup.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
-  dateTime: PropTypes.string,
+  startTime: PropTypes.string,
+  creationTime: PropTypes.string,
+  duration: PropTypes.string,
+  maxMembers: PropTypes.number,
+  owner: PropTypes.number,
+  members: PropTypes.array,
 };
 
 export default ActivityPopup;
