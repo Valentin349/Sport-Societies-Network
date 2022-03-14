@@ -4,6 +4,7 @@ import useFetch from "../hooks/useFetch";
 // import useFetch from "../hooks/useFetchAsync";
 import "css/sports.css";
 import ActivityPopup from "../components/common/activityPopup";
+import AddActivityPopup from "../components/common/addActivityPopup";
 
 const Sports = () => {
   let { sportName } = useParams();
@@ -28,6 +29,7 @@ const Sports = () => {
         <li>
           <ul className="socIndividualBox">
             Events...
+            <li><AddActivityPopup/></li>
             {data.map((item, index) => (
               <li key={index}>
                 <ActivityPopup {...item} />
