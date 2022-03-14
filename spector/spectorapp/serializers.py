@@ -14,6 +14,12 @@ class SportSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ActivitySerializer(serializers.ModelSerializer):
+    members = serializers.SlugRelatedField(
+        many=True,
+        read_only=False,
+        queryset=User.objects.all(),
+        slug_field="username",
+    )
     class Meta:
         model = Activity
         fields = '__all__'       
