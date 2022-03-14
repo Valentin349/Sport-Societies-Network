@@ -1,0 +1,92 @@
+.buttonAdd, .buttonJoin{
+  cursor: pointer;
+  padding: 0px 30px;
+  display: inline-block;
+  margin: 5px 0px;
+  /*text-align: left;*/
+  line-height: 2em;
+  letter-spacing: 1.5px;
+  font-size: 1em;
+  outline: none;
+  position: relative;
+  font-size: 14px;
+  background-color: #bfb3ff;
+  outline: 2px solid white;
+  border-radius: 20px;
+  color: white;
+  border-radius: 15px 15px 15px 15px;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.buttonJoin {
+  border: 2px solid #aa99ff;
+  background-color: #ffffff;
+  width: 25%;
+  color: #000000;
+}
+  
+
+.buttonAdd:hover,
+.buttonAdd.hover {
+  border-color: #2980b9;
+}
+
+.popupHeader {
+    color:#00ff00;
+    text-align: center;
+    display: block;
+}
+
+.titleBox {
+    box-sizing:border-box;
+    width: 100%;
+}
+
+.descBox {
+    width: 100%;
+    box-sizing: border-box;
+    display:block;
+    resize:none;
+}
+
+/* TODO transfer and clean up styles*/
+.modal {
+  font-size: 12px;
+  /* padding: 15px; */
+  padding: 15px 15px 5px 15px;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px 1px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 1px;
+}
+.modal > .actions {
+  margin: auto;
+  text-align: center;
+}
+  
+  /* X close button */
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 2px solid #aa99ff;
+  transition: all 0.3s;
+}
+.modal > .close:hover {
+  border-color: #2980b9;
+}
