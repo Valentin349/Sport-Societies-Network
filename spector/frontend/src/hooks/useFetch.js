@@ -5,18 +5,11 @@ const useFetch = (url, method = "GET", body = null) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([]);
 
-  let headers = new Headers();
-  headers.append("Content-Type", "application/json");
-  // headers.append("Authorization", `Token ${token}`)
-  let username = "admin";
-  let password = "password";
-  headers.set("Authorization", "Basic " + btoa(username + ":" + password));
-
-  // let token = sessionStorage.getItem("token");
-  // let headers = new Headers([
-  //   ["Content-Type", "application/json"],
-  //   ["Authorization", `Token ${token}`]
-  // ])
+  let token = sessionStorage.getItem("token");
+  let headers = new Headers([
+    ["Content-Type", "application/json"],
+    ["Authorization", `Token ${token}`],
+  ]);
 
   useEffect(() => {
     fetch(url, { method: method, body: body, headers: headers })
