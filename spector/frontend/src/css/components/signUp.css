@@ -1,0 +1,66 @@
+.SignUpLayout {
+  position: fixed;
+  background-color: #bfb3ff;
+  border-radius: 27px;
+  outline: 2px ridge #bfb3ff;
+  top: 50%;
+  left: 50%;
+  /* margin-top: -50px;
+      margin-left: -100px; */
+  width: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.SignUpTitle {
+  color: white;
+  font-size: 35px;
+  text-align: center;
+}
+
+label {
+  color: white;
+  font-size: 25px;
+  margin: 5%;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 90%;
+  padding: 12px;
+  font-size: 15px;
+  margin: 5%;
+  transform: translate(0, -50%);
+  border: none;
+  box-sizing: border-box;
+  border-radius: 20px;
+  border: 4px solid #aa99ff;
+}
+
+input[type="submit"] {
+  background-color: #aa99ff;
+  border-radius: 12px;
+  border: none;
+  outline: 2px solid #9580ff;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+  margin: 0px 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px;
+}
+
+input[type="submit"]:hover {
+  background-color: #9580ff;
+  border-radius: 12px;
+  border: none;
+  outline: 2px solid #aa99ff;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+  margin: 0px 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px;
+}
