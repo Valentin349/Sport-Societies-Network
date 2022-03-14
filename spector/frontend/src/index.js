@@ -14,15 +14,10 @@ import ProtectedRoute from "./ProtectedRoute";
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/login" element={<SignInSignUp />} />
-
-      <Route path="" element={<ProtectedRoute route={<NavBar />} />}>
-        <Route path="/" element={<Home />} />
-        <Route path="sports" element={<SportsList />} />
-        <Route path="sports/:sportName" element={<Sports />} />
-        <Route path="profile/:username" element={<Profile />} />
-      </Route>
-
+      <Route path="/" element={<Home />} />
+      <Route path="sports" element={<SportsList />} />
+      <Route path="sports/:sportName" element={<Sports />} />
+      <Route path="profile" element={<Profile />} />//Changes made profile/:username to 
       <Route
         path="*"
         element={
