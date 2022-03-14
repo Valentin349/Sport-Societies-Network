@@ -5,16 +5,6 @@ from rest_framework import serializers
 from .models import Profile, Sports, Activity
 from django.contrib.auth.models import User
 
-class ProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Profile
-        fields = '__all__'
-
-class SportSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Sports
-        fields = '__all__'
-
 class ActivitySerializer(serializers.ModelSerializer):
     members = serializers.SlugRelatedField(
         many=True,
@@ -24,7 +14,26 @@ class ActivitySerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Activity
-        fields = '__all__'       
+        fields = '__all__'   
+
+class ProfileSerializer(serializers.ModelSerializer):
+    activities = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Profile
+        fields = '__all__'
+    
+    def get_activities(self, obj):
+        owner = obj.owner.id
+        user = User.objects.get(pk=owner)
+        activites = user.activities.all()
+        response = ActivitySerializer(activites, many=True).data
+        return response
+
+class SportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sports
+        fields = '__all__'    
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
