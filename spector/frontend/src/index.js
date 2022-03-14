@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./css/fonts.css";
 import NavBar from "./components/common/navbar/NavBar";
+import SignInSignUp from "./routes/signInSignUp";
 import Home from "./routes/home";
 import SportsList from "./routes/sportsList";
 import Sports from "./routes/sports";
@@ -11,12 +12,12 @@ import Profile from "./routes/profile";
 // react renderer
 ReactDOM.render(
   <BrowserRouter>
-    <NavBar />
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="sports" element={<SportsList />} />
-      <Route path="sports/:sportName" element={<Sports />} />
-      <Route path="profile/:username" element={<Profile />} />
+      <Route path="/" element={<SignInSignUp />} />
+      {/* <Route path="/" element={<Home />} /> */}
+      <Route path="sports" element={<><NavBar /><SportsList /></>} />
+      <Route path="sports/:sportName" element={<><NavBar /><Sports /></>} />
+      <Route path="profile/:username" element={<><NavBar /><Profile /></>} />
       <Route
         path="*"
         element={
