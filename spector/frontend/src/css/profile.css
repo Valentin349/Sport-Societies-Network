@@ -1,0 +1,18 @@
+.ProfileItems {
+    background-color: whitesmoke;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 27px;
+    outline: 2px ridge #bfb3ff;
+}
+
+.ProfileTittle {
+    margin-left: 30px;
+    color: #aa80ff;
+    font-size: 30px;
+  }
+
+ul.ba {
+    list-style-type: none;
+}

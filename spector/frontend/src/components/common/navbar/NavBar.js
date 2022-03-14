@@ -3,8 +3,17 @@ import { NavLink } from "react-router-dom";
 import Button from "../button";
 import { MenuItems } from "./MenuItems";
 import "css/components/NavBar.css";
+import { useNavigate } from 'react-router';
+
 
 const NavBar = () => {
+
+  let navigate = useNavigate();
+
+  function handleClick() {
+    navigate('profile')
+  }
+
   return (
     <nav className="NavBar-Items">
       <h1 className="navbar-logo">Spector</h1>
@@ -17,7 +26,7 @@ const NavBar = () => {
           </li>
         ))}
       </ul>
-      <Button>Profile</Button>
+      <Button onClick={handleClick} > Profile</Button>
     </nav>
   );
 };
