@@ -19,7 +19,7 @@ const Profile = () => {
   return (
     <nav className = "ProfileItems">
       <h2 className="ProfileTittle"> Profile Page</h2>
-        <ul class = "ba">
+        <ul className = "ba">
           {data.map((item, index) => (
             <li key={index}>
                 Name : {item.name}<br/>
