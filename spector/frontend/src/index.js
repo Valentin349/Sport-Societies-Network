@@ -8,16 +8,21 @@ import Home from "./routes/home";
 import SportsList from "./routes/sportsList";
 import Sports from "./routes/sports";
 import Profile from "./routes/profile";
+import ProtectedRoute from "./ProtectedRoute";
 
 // react renderer
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<SignInSignUp />} />
-      {/* <Route path="/" element={<Home />} /> */}
-      <Route path="sports" element={<><NavBar /><SportsList /></>} />
-      <Route path="sports/:sportName" element={<><NavBar /><Sports /></>} />
-      <Route path="profile/:username" element={<><NavBar /><Profile /></>} />
+      <Route path="/login" element={<SignInSignUp />} />
+
+      <Route path="" element={<ProtectedRoute route={<NavBar />} />}>
+        <Route path="/" element={<Home />} />
+        <Route path="sports" element={<SportsList />} />
+        <Route path="sports/:sportName" element={<Sports />} />
+        <Route path="profile/:username" element={<Profile />} />
+      </Route>
+
       <Route
         path="*"
         element={
