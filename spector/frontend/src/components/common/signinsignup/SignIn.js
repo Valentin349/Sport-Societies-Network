@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "css/components/signIn.css";
-import useFetch from "../../../hooks/useFetch";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
-  const [error, setError] = useState(null);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,19 +21,32 @@ const SignIn = () => {
       headers: headers,
       body: JSON.stringify(loginDetails),
     })
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          sessionStorage.setItem("token", result);
-          setIsLoaded(true);
-          console.log("Token retrieved");
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-          console.log(error);
+      .then((res) => {
+        if (!res.ok) {
+          if (res.status === 400) {
+            throw Error("Invalid credentials");
+          } else {
+            throw Error("Something went wrong");
+          }
         }
-      );
+        return res.json();
+      })
+      .then((result) => {
+        sessionStorage.setItem("token", result.token);
+        sessionStorage.setItem("userID", result.id);
+        sessionStorage.setItem("username", username);
+        setIsLoaded(true);
+        console.log("Token retrieved");
+      })
+      .then(() => {
+        const prevPath = location.state?.from?.pathname || "/";
+        navigate(prevPath);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setIsLoaded(true);
+        setError(error.message);
+      });
   };
 
   return (
