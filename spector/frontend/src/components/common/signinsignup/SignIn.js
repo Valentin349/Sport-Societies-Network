@@ -36,6 +36,8 @@ const SignIn = () => {
         sessionStorage.setItem("userID", result.id);
         sessionStorage.setItem("username", username);
         setIsLoaded(true);
+        setError(null);
+
         console.log("Token retrieved");
       })
       .then(() => {
@@ -44,6 +46,7 @@ const SignIn = () => {
       })
       .catch((error) => {
         console.log(error.message);
+
         setIsLoaded(true);
         setError(error.message);
       });
