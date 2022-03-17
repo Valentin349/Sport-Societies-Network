@@ -11,7 +11,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=30)
     bio = models.CharField(max_length=100)
     age = models.IntegerField(default=18)
-    owner = models.OneToOneField(User, on_delete=models.CASCADE)
+    owner = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     def __str__(self):
         return self.name
 
@@ -29,6 +29,6 @@ class Activity(models.Model):
     duration = models.DurationField(default=timedelta)
     members = models.ManyToManyField(User, related_name='activities')
     maxMembers = models.IntegerField(null=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, default="1")
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.name

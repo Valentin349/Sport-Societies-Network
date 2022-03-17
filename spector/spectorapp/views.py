@@ -22,6 +22,9 @@ class ActivityViewSet(viewsets.ModelViewSet):
     filter_fields = ['sport', 'id']
     permission_classes = [AdminAuthor_elseReadonly]
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 class CreateUserView(APIView):
     """
     Create/Register new user
