@@ -1,5 +1,4 @@
-from cgitb import lookup
-from rest_framework import mixins, viewsets, permissions, status
+from rest_framework import mixins, viewsets, permissions, status, filters
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
@@ -10,7 +9,6 @@ from .permissions import AdminAuthor_elseReadonly
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
-from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 class SportsViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
@@ -20,9 +18,12 @@ class SportsViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
 class ActivityViewSet(viewsets.ModelViewSet):
     queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
-    filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filter_fields = ['sport', 'id']
     permission_classes = [AdminAuthor_elseReadonly]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 class CreateUserView(APIView):
     """

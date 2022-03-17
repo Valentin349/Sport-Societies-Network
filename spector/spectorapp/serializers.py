@@ -3,26 +3,37 @@ from rest_framework.validators import UniqueValidator
 from .models import Profile, Sports, Activity
 from django.contrib.auth.models import User
 
+class MemberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username')
+
+class ActivitySerializer(serializers.ModelSerializer):
+    members = MemberSerializer(many=True)
+    owner = MemberSerializer()
+
+    class Meta:
+        model = Activity
+        fields = '__all__'   
+
 class ProfileSerializer(serializers.ModelSerializer):
+    activities = serializers.SerializerMethodField()
+
     class Meta:
         model = Profile
         fields = '__all__'
+    
+    def get_activities(self, obj):
+        owner = obj.owner.id
+        user = User.objects.get(pk=owner)
+        activites = user.activities.all()
+        response = ActivitySerializer(activites, many=True).data
+        return response
 
 class SportSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sports
-        fields = '__all__'
-
-class ActivitySerializer(serializers.ModelSerializer):
-    members = serializers.SlugRelatedField(
-        many=True,
-        read_only=False,
-        queryset=User.objects.all(),
-        slug_field="username",
-    )
-    class Meta:
-        model = Activity
-        fields = '__all__'       
+        fields = '__all__'    
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -31,6 +42,7 @@ class UserSerializer(serializers.ModelSerializer):
     )
     username = serializers.CharField(
         max_length = 32,
+        required=True,
         validators=[UniqueValidator(queryset=User.objects.all())]
     )
     password = serializers.CharField(
