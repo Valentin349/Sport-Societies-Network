@@ -21,7 +21,28 @@ class ActivityViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filter_fields = ['sport', 'id']
     permission_classes = [AdminAuthor_elseReadonly]
-    
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+class CreateUserView(APIView):
+    """
+    Create/Register new user
+    """
+    # remove permissions for this view
+    permission_classes = []
+
+    def post(self, request, format='json'):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            if user:
+                token = Token.objects.create(user=user)
+                json = serializer.data
+                json['token'] = token.key
+                return Response(json, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
