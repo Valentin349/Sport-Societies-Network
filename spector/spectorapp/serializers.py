@@ -10,6 +10,10 @@ class ActivitySerializer(serializers.ModelSerializer):
         queryset=User.objects.all(),
         slug_field="username",
     )
+    owner = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field="username",
+    )
     class Meta:
         model = Activity
         fields = '__all__'   
