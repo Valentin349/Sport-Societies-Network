@@ -2,6 +2,7 @@ import React from "react";
 import Popup from "reactjs-popup";
 import "css/activityPopup.css";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const ActivityPopup = (props) => {
   //props.dateTime is in the ISO format in UTC (Z)
@@ -18,6 +19,7 @@ const ActivityPopup = (props) => {
         </button>
       }
       modal
+      nested
     >
       {(close) => (
         <div className="modal">
@@ -47,6 +49,18 @@ const ActivityPopup = (props) => {
           </div>
           <div className="actions">
             <button className="button">Join</button>
+            <Popup
+              trigger={<button className="button"> 3/4 </button>}
+              on="hover"
+            >
+              <div>
+                {props.members.map((user, index) => (
+                  <ul key={index}>
+                    <Link to={`/profile/${user}`}>{user}</Link>
+                  </ul>
+                ))}
+              </div>
+            </Popup>
           </div>
         </div>
       )}
