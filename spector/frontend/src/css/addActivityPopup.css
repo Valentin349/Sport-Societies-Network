@@ -33,7 +33,7 @@
 }
 
 .popupHeader {
-    color:#00ff00;
+    /* color:#00ff00; */
     text-align: center;
     display: block;
 }
@@ -41,6 +41,7 @@
 .titleBox {
     box-sizing:border-box;
     width: 100%;
+    text-align: center;
 }
 
 .descBox {
@@ -48,45 +49,6 @@
     box-sizing: border-box;
     display:block;
     resize:none;
-}
-
-/* TODO transfer and clean up styles*/
-.modal {
-  font-size: 12px;
-  /* padding: 15px; */
-  padding: 15px 15px 5px 15px;
-}
-.modal > .header {
-  width: 100%;
-  border-bottom: 1px solid gray;
-  font-size: 18px;
-  text-align: center;
-  padding: 5px 1px;
-}
-.modal > .content {
-  width: 100%;
-  padding: 10px 1px;
-}
-.modal > .actions {
-  margin: auto;
-  text-align: center;
-}
-  
-  /* X close button */
-.modal > .close {
-  cursor: pointer;
-  position: absolute;
-  display: block;
-  padding: 2px 5px;
-  line-height: 20px;
-  right: -10px;
-  top: -10px;
-  font-size: 24px;
-  background: #ffffff;
-  border-radius: 18px;
-  border: 2px solid #aa99ff;
-  transition: all 0.3s;
-}
-.modal > .close:hover {
-  border-color: #2980b9;
+    font-family: Arial;
+    text-align: center;
 }
