@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import Popup from "reactjs-popup";
+import "css/components/popup.css"
 import "css/addActivityPopup.css";
 import DateTimePicker from 'react-datetime-picker'
 
 const AddActivityPopup = () => {
+  const minParticipants = 1;
+
+  const [title, setTitle] = useState('')
+  const [desc, setDesc] = useState('');
   const [startDate, setStart] = useState(new Date());
   const [endDate, setEnd] = useState(new Date());
+  const [maxNum, setMaxNum] = useState(minParticipants);
 
   /* TODO - handle null better (disable x button?), datetime-range-picker  */
 
@@ -45,10 +51,21 @@ const AddActivityPopup = () => {
                 type="text"
                 required
                 className="titleBox"
+                onChange={e => setTitle(e.target.value)}
+                value={title}
+                placeholder="Give your event a name here!"
               />
+
               <br></br><br></br>
               <label className="popupHeader">Description</label>
-              <textarea className="descBox" required></textarea>
+              <textarea
+                className="descBox"
+                required
+                onChange={e => setDesc(e.target.value)}
+                value={desc}
+                placeholder="Add useful information about your event here. For example: Where is it hosted? What do participants need to bring?"
+              ></textarea>
+
               <br></br>
               <div>
                 <label className="popupHeader">Start Time</label>
@@ -56,6 +73,16 @@ const AddActivityPopup = () => {
                 <label className="popupHeader">End Time</label>
                 <DateTimePicker onChange={handleEndChange} value={endDate} required/>
               </div>
+
+              <br></br>
+              <label className="popupHeader">Maximum Participants</label>
+              <input
+                type="number"
+                onChange={e => setMaxNum(e.target.value)}
+                value={maxNum}
+                min={minParticipants.toString()}
+                required
+              ></input>
               
           </form>
           </div>
