@@ -12,12 +12,13 @@ import ProtectedRoute from "./ProtectedRoute";
 
 // react renderer
 ReactDOM.render(
+  
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="sports" element={<SportsList />} />
       <Route path="sports/:sportName" element={<Sports />} />
-      <Route path="profile" element={<Profile />} />//Changes made profile/:username to 
+      <Route path="profile/:userID" element={<Profile />} />//Changes made profile/:username to 
       <Route
         path="*"
         element={
