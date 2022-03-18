@@ -38,6 +38,7 @@
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/runtime": "^7.17.2",
     "react-datetime-picker": "^3.5.0",
+    "react-duration-picker": "^1.1.1",
     "react-router-dom": "^6.2.1",
     "reactjs-popup": "^2.0.5"
   }

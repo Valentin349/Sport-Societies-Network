@@ -3,6 +3,7 @@ import Popup from "reactjs-popup";
 import "css/components/popup.css"
 import "css/addActivityPopup.css";
 import DateTimePicker from 'react-datetime-picker'
+import DurationPicker from 'react-duration-picker'
 
 const AddActivityPopup = () => {
   const minParticipants = 1;
@@ -14,6 +15,11 @@ const AddActivityPopup = () => {
   const [maxNum, setMaxNum] = useState(minParticipants);
 
   /* TODO - handle null better (disable x button?), datetime-range-picker  */
+
+  const onChange = duration => {
+    const { hours, minutes, seconds } = duration;
+    setState({ hours, minutes, seconds });
+  };
 
   const handleStartChange = (date) => {
     if (endDate < date | endDate == null) {
@@ -28,6 +34,44 @@ const AddActivityPopup = () => {
     };
     setEnd(date);
   };
+
+  const handleSubmit = (event) => {
+      event.preventDefault();
+      let owner = "admin" //sessionStorage.username
+      let username = "admin"; // TODO change to useFetch
+      let password = "password";
+
+      const jsonOut = {"members":[],
+                       "owner":{"username":{owner}},  
+                       "name":title,
+                       "description":desc,
+                       "startTime":startDate.toISOString(),
+                       "duration":"00:00:01",
+                       "maxMembers":maxNum,
+                       "sport":"Football"};    // probably pass as argument
+
+      let headers = new Headers({ "Content-Type": "application/json" });
+      headers.set("Authorization", "Basic " + btoa(username + ":" + password));
+  
+      fetch("/api/activities/", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(jsonOut),
+      })
+        .then((res) => {
+          if (!res.ok) {
+            console.log(res.json());
+          }
+          
+        })
+        .then((result) => {
+          console.log("Activity posted");
+          console.log(result)
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+  }
 
   return (
     <Popup
@@ -45,7 +89,7 @@ const AddActivityPopup = () => {
           </a>
           <div className="header">New Event</div>
           <div className="content">
-            <form>
+            <form onSubmit={handleSubmit} id="activityForm">
               <label className="popupHeader">Title</label>
               <input
                 type="text"
@@ -75,6 +119,8 @@ const AddActivityPopup = () => {
               </div>
 
               <br></br>
+
+              <br></br>
               <label className="popupHeader">Maximum Participants</label>
               <input
                 type="number"
@@ -83,17 +129,39 @@ const AddActivityPopup = () => {
                 min={minParticipants.toString()}
                 required
               ></input>
-              
+
+              <br></br>
+              <input
+                type="checkbox"
+                value="yes"
+                name="joinAsMember"
+                id="joinAsMember"
+              ></input>
+              <label htmlFor="joinAsMember">Join as Participant</label>
           </form>
           </div>
           
           <div className="actions">
-            <button className="buttonJoin">Add</button>
+            <button type="submit" className="buttonJoin" form="activityForm">Add</button>
           </div>
+
+          
         </div>
       )}
     </Popup>
   );
 };
+
+/* TODO extract to common?
+AddActivityPopup.propTypes = {
+  name: PropTypes.string,
+  description: PropTypes.string,
+  startTime: PropTypes.string,
+  creationTime: PropTypes.string,
+  duration: PropTypes.string,
+  maxMembers: PropTypes.number,
+  owner: PropTypes.number,
+  members: PropTypes.array,
+};  */
 
 export default AddActivityPopup;
