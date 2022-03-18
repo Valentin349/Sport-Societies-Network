@@ -8,10 +8,9 @@ import "css/profile.css";
 
 const Profile = () => {
 
-  const { isLoaded, data, message } = useFetch("/api/profile/");
+  let { userID } = useParams();
+  const { isLoaded, data, message } = useFetch(`/api/profile/${userID}/`);
   
-  //let { username } = useParams();
-
   if (!isLoaded) {
     return message;
   }
@@ -21,12 +20,9 @@ const Profile = () => {
       <h2 className="ProfileTittle"> Profile Page</h2>
         <ul className = "ba">
           {data.map((item, index) => (
-            <li key={index}>
-                Name : {item.name}<br/>
-                Bio : {item.bio}<br/>
-                Age : {item.age}<br/>
-                
-            </li>
+              <li key={index}>
+                <ActivityPopup {...item} />
+              </li>
           ))}
         </ul>
 

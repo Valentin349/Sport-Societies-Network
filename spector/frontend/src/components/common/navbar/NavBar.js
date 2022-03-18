@@ -9,9 +9,11 @@ import { useNavigate } from 'react-router';
 const NavBar = () => {
 
   let navigate = useNavigate();
+  let userID = sessionStorage.getItem("userID")// Retrieve userID with this
+
 
   function handleClick() {
-    navigate('profile')
+    navigate('profile/<user id>/')
   }
 
   return (

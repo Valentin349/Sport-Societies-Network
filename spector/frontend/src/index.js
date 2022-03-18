@@ -10,13 +10,14 @@ import Profile from "./routes/profile";
 
 // react renderer
 ReactDOM.render(
+  
   <BrowserRouter>
     <NavBar />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="sports" element={<SportsList />} />
       <Route path="sports/:sportName" element={<Sports />} />
-      <Route path="profile" element={<Profile />} />//Changes made profile/:username to 
+      <Route path="profile/:userID" element={<Profile />} />//Changes made profile/:username to 
       <Route
         path="*"
         element={
