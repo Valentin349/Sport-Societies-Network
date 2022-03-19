@@ -17,7 +17,7 @@ ReactDOM.render(
       <Route path="/" element={<Home />} />
       <Route path="sports" element={<SportsList />} />
       <Route path="sports/:sportName" element={<Sports />} />
-      <Route path="profile/:userID" element={<Profile />} />//Changes made profile/:username to 
+      <Route path="profile/:userID" element={<Profile />} />
       <Route
         path="*"
         element={
