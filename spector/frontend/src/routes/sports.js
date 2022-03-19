@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
-// import useFetch from "../hooks/useFetchAsync";
 import "css/sports.css";
 import ActivityPopup from "../components/common/activityPopup";
 

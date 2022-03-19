@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import Button from "../button";
 import { MenuItems } from "./MenuItems";
 import "css/components/NavBar.css";
