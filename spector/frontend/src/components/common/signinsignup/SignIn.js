@@ -7,6 +7,7 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [signInError, setSignInError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -23,12 +24,14 @@ const SignIn = () => {
     })
       .then((res) => {
         if (!res.ok) {
-          if (res.status === 400) {
-            throw Error("Invalid credentials");
-          } else {
-            throw Error("Something went wrong");
-          }
+          res.text().then(text => setSignInError(JSON.parse(text)));
         }
+        //   if (res.status === 400) {
+        //     throw Error("Invalid credentials");
+        //   } else {
+        //     throw Error("Something went wrong");
+        //   }
+        // }
         return res.json();
       })
       .then((result) => {
@@ -72,6 +75,7 @@ const SignIn = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <p className="signInError"> { signInError.non_field_errors }</p>
 
         <input type="submit" />
       </form>
