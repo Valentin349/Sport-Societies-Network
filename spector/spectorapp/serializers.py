@@ -11,6 +11,27 @@ class ActivitySerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.id')
     ownerName = serializers.StringRelatedField(source='owner')
 
+    def validate(self, data):
+        if not self.partial:
+            if data['maxMembers'] < len(data['members']):
+                raise serializers.ValidationError("more members than max members")
+        return data
+
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get("name", instance.name)
+        instance.description = validated_data.get("description", instance.description)
+        instance.startTime = validated_data.get("startTime", instance.startTime)
+        instance.duration = validated_data.get("duration", instance.duration)
+        instance.maxMembers = validated_data.get("maxMembers", instance.maxMembers)
+
+        if instance.maxMembers < len(validated_data.get("members", instance.members)):
+            raise serializers.ValidationError("number of members is over max member limit")
+        else:
+            instance.members.set(validated_data.get("members", instance.members))
+        
+        instance.save()
+        return instance
+
     class Meta:
         model = Activity
         fields = '__all__'   
