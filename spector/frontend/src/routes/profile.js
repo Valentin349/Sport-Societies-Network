@@ -21,7 +21,10 @@ const Profile = () => {
         <ul className = "ba">
           {data.map((item, index) => (
               <li key={index}>
-                <ActivityPopup {...item} />
+                Name : {item.name}<br/>
+                Bio : {item.bio}<br/>
+                Age : {item.age}<br/>
+              
               </li>
           ))}
         </ul>
