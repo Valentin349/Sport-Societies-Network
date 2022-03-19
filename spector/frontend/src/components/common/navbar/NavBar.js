@@ -17,19 +17,22 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="NavBar-Items">
-      <h1 className="navbar-logo">Spector</h1>
-      <ul className="NavBar-Menu">
-        {MenuItems.map((item, index) => (
-          <li key={index}>
-            <NavLink to={item.url} className={item.cName} end>
-              {item.title}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-      <Button onClick={handleClick} > Profile</Button>
-    </nav>
+    <>
+      <nav className="NavBar-Items">
+        <h1 className="navbar-logo">Spector</h1>
+        <ul className="NavBar-Menu">
+          {MenuItems.map((item, index) => (
+            <li key={index}>
+              <NavLink to={item.url} className={item.cName} end>
+                {item.title}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+        <Button onClick={handleClick} > Profile</Button>
+      </nav>
+      <Outlet />
+    </>
   );
 };
 
