@@ -5,9 +5,7 @@ import SignUp from "../components/common/signinsignup/SignUp";
 import "css/signInSignUp.css";
 
 const SignInSignUp = () => {
-  const [signin, setSignin] = useState(true);
-
-  const SignInclickHandler = () => {};
+  const [signin, setSignin] = useState(false);
 
   return (
     <div className="signInSignUpPage">
