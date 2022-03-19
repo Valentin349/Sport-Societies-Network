@@ -5,14 +5,11 @@ from rest_framework import serializers
 from .models import Profile, Sports, Activity
 from django.contrib.auth.models import User
 
-class MemberSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'username')
-
 class ActivitySerializer(serializers.ModelSerializer):
-    members = MemberSerializer(many=True)
-    owner = MemberSerializer()
+    members = serializers.PrimaryKeyRelatedField(many=True, queryset=User.objects.all())
+    membersName = serializers.StringRelatedField(source='members', many=True, read_only=True)
+    owner = serializers.ReadOnlyField(source='owner.id')
+    ownerName = serializers.StringRelatedField(source='owner')
 
     class Meta:
         model = Activity
@@ -29,7 +26,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         owner = obj.owner.id
         user = User.objects.get(pk=owner)
         activites = user.activities.all()
-        response = ActivitySerializer(activites, many=True).data
+        response = Activitarializer(activites, many=True).data
         return response
 
 class SportSerializer(serializers.ModelSerializer):
