@@ -24,7 +24,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         owner = obj.owner.id
         user = User.objects.get(pk=owner)
         activites = user.activities.all()
-        response = Activitarializer(activites, many=True).data
+        response = ActivitySerializer(activites, many=True).data
         return response
 
 class SportSerializer(serializers.ModelSerializer):
