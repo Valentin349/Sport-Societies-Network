@@ -4,39 +4,40 @@ import useFetch from "../hooks/useFetch";
 import "css/profile.css";
 import ActivityPopup from "../components/common/activityPopup";
 
-
-
 const Profile = () => {
-
   let { userID } = useParams();
-  
+
   const { isLoaded, data, message } = useFetch(`/api/profile/${userID}/`);
-  
+
   if (!isLoaded) {
     return message;
   }
 
   return (
-    <nav className = "ProfileItems">
-      <h2 className="ProfileTittle"> Profile Page</h2>
-        <ul className = "ba">
+    <div className="Profile-Items">
+      <h2 className="Profile-Title"> Profile Page</h2>
+      <ul className="Profile-PageLayout">
+        <li>
+          <ul className="Profile-IndividualBox">
+            <li>Name : {data.name}</li>
+            <li>Age : {data.age}</li>
+            <li>Bio : {data.bio}</li>
+          </ul>
+        </li>
 
-              Name : {data.name}<br/>
-              Age : {data.age}<br/>
-              Bio : {data.bio}<br/>
-               <br/>
-              {data.activities?.map((item, index) => (
-                <p key={index}>
-                  <ActivityPopup {...item} />
-                </p>
+        <li>
+          <ul className="Profile-IndividualBox">
+            Joined Activities:
+            {data.activities?.map((item, index) => (
+              <li key={index}>
+                <ActivityPopup {...item} />
+              </li>
             ))}
-        </ul>
-
-
-    
-    </nav>
+          </ul>
+        </li>
+      </ul>
+    </div>
   );
 };
 
 export default Profile;
-
