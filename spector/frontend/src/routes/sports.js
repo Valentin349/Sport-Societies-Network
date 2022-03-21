@@ -28,7 +28,9 @@ const Sports = () => {
         <li>
           <ul className="socIndividualBox">
             Events...
-            <li><AddActivityPopup {...{sportName}}/></li>
+            <li>
+              <AddActivityPopup sportName={sportName} />
+            </li>
             {data.map((item, index) => (
               <li key={index}>
                 <ActivityPopup {...item} />
