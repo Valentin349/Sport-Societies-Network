@@ -15,10 +15,15 @@ ReactDOM.render(
   
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="sports" element={<SportsList />} />
-      <Route path="sports/:sportName" element={<Sports />} />
-      <Route path="profile/:userID" element={<Profile />} />
+      <Route path="/login" element={<SignInSignUp />} />
+
+      <Route path="" element={<ProtectedRoute route={<NavBar />} />}>
+        <Route path="/" element={<Home />} />
+        <Route path="sports" element={<SportsList />} />
+        <Route path="sports/:sportName" element={<Sports />} />
+        <Route path="profile/:2" element={<Profile />} />
+      </Route>
+
       <Route
         path="*"
         element={
