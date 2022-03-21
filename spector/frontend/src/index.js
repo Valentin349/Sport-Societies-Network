@@ -21,7 +21,7 @@ ReactDOM.render(
         <Route path="/" element={<Home />} />
         <Route path="sports" element={<SportsList />} />
         <Route path="sports/:sportName" element={<Sports />} />
-        <Route path="profile/:2" element={<Profile />} />
+        <Route path="profile/:userID" element={<Profile />} />
       </Route>
 
       <Route

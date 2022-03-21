@@ -9,7 +9,8 @@ import ActivityPopup from "../components/common/activityPopup";
 const Profile = () => {
 
   let { userID } = useParams();
-  const { isLoaded, data, message } = useFetch(`/api/profile/?id=2`);
+  
+  const { isLoaded, data, message } = useFetch(`/api/profile/${userID}/`);
   
   if (!isLoaded) {
     return message;
@@ -19,19 +20,16 @@ const Profile = () => {
     <nav className = "ProfileItems">
       <h2 className="ProfileTittle"> Profile Page</h2>
         <ul className = "ba">
-          {data.map((item, index) => (
-            <li key={index}>
-              Name : {item.name}<br/>
-              Age : {item.age}<br/>
-              Bio : {item.bio}<br/>
-            </li>
-          ))}
-          {data.map((item, index) => (
-              <li key={index}>
-                <ActivityPopup {...item} />
-              </li>
-            ))}
 
+              Name : {data.name}<br/>
+              Age : {data.age}<br/>
+              Bio : {data.bio}<br/>
+               <br/>
+              {data.activities?.map((item, index) => (
+                <p key={index}>
+                  <ActivityPopup {...item} />
+                </p>
+            ))}
         </ul>
 
 
@@ -41,3 +39,4 @@ const Profile = () => {
 };
 
 export default Profile;
+
