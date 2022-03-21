@@ -1,18 +1,33 @@
-.ProfileItems {
-    background-color: whitesmoke;
-    padding-top: 5px;
-    padding-bottom: 20px;
-    margin-top: 20px;
-    border-radius: 27px;
-    outline: 2px ridge #bfb3ff;
+.Profile-Items {
+  background-color: whitesmoke;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 27px;
+  outline: 2px ridge #bfb3ff;
 }
 
-.ProfileTittle {
-    margin-left: 30px;
-    color: #aa80ff;
-    font-size: 30px;
-  }
-
-ul.ba {
-    list-style-type: none;
+.Profile-Title {
+  margin-left: 30px;
+  color: #aa80ff;
+  font-size: 30px;
 }
+
+.Profile-PageLayout {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 0px 10px;
+  list-style: none;
+  padding-right: 40px;
+}
+
+.Profile-IndividualBox {
+  padding: 10px;
+  font-size: 25px;
+  background-color: white;
+  outline: 2px solid #bfb3ff;
+  border-radius: 20px;
+  color: #aa99ff;
+  list-style: none;
+}
+
