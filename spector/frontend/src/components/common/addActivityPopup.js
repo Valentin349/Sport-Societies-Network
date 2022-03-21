@@ -30,7 +30,6 @@ const AddActivityPopup = (name) => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
       let token = sessionStorage.getItem("token");
       let headers = new Headers([
         ["Content-Type", "application/json"],
