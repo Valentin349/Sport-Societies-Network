@@ -13,7 +13,7 @@ const NavBar = () => {
 
 
   function handleClick() {
-    navigate('/profile/' + userID )
+    navigate('/profile/' + userID)
   }
 
   return (
