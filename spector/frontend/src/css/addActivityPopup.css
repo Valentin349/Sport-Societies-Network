@@ -19,13 +19,27 @@
   width: 100%;
 }
 
+.centerRow {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.maxMemberInput {
+  margin-right: 1vw;
+  width: 20%;
+  text-align: center;
+}
+
 .buttonJoin {
   border: 2px solid #aa99ff;
   background-color: #ffffff;
   width: 25%;
   color: #000000;
 }
-  
 
 .buttonAdd:hover,
 .buttonAdd.hover {
