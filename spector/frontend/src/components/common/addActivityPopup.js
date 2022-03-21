@@ -11,48 +11,45 @@ const AddActivityPopup = () => {
   const [title, setTitle] = useState('')
   const [desc, setDesc] = useState('');
   const [startDate, setStart] = useState(new Date());
-  const [endDate, setEnd] = useState(new Date());
   const [maxNum, setMaxNum] = useState(minParticipants);
+  const [hours, setHours] = useState(0);
+  const [mins, setMins] = useState(0);
+  const [sec, setSec] = useState(0);
 
-  /* TODO - handle null better (disable x button?), datetime-range-picker  */
-
-  const onChange = duration => {
-    const { hours, minutes, seconds } = duration;
-    setState({ hours, minutes, seconds });
+  const handleDurationChange = duration => {
+    console.log(duration);
+    setHours(duration.hours);
+    setMins(duration.minutes);
+    setSec(duration.seconds)
   };
 
   const handleStartChange = (date) => {
-    if (endDate < date | endDate == null) {
-        setEnd(date);
-    };
     setStart(date);
-  };
-
-  const handleEndChange = (date) => {
-    if (startDate > date | startDate == null) {
-        setStart(date);
-    };
-    setEnd(date);
   };
 
   const handleSubmit = (event) => {
       event.preventDefault();
       let owner = "admin" //sessionStorage.username
+      
       let username = "admin"; // TODO change to useFetch
       let password = "password";
 
+      let duration = String(hours).padStart(2, "0") + ":" + String(mins).padStart(2, "0") + ":" + String(sec).padStart(2, "0")
+
       const jsonOut = {"members":[],
-                       "owner":{"username":{owner}},  
+                       "owner":{"username":owner},  
                        "name":title,
                        "description":desc,
                        "startTime":startDate.toISOString(),
-                       "duration":"00:00:01",
+                       "duration":duration,
                        "maxMembers":maxNum,
                        "sport":"Football"};    // probably pass as argument
 
       let headers = new Headers({ "Content-Type": "application/json" });
       headers.set("Authorization", "Basic " + btoa(username + ":" + password));
   
+      console.log(jsonOut)
+
       fetch("/api/activities/", {
         method: "POST",
         headers: headers,
@@ -111,33 +108,37 @@ const AddActivityPopup = () => {
               ></textarea>
 
               <br></br>
-              <div>
-                <label className="popupHeader">Start Time</label>
-                <DateTimePicker onChange={handleStartChange} value={startDate} required/>
-                <label className="popupHeader">End Time</label>
-                <DateTimePicker onChange={handleEndChange} value={endDate} required/>
+              <label className="popupHeader">Start Time</label>
+              <div className="centerRow">
+                <DateTimePicker className="center" onChange={handleStartChange} value={startDate} required/>
               </div>
 
               <br></br>
+              <label className="popupHeader">Duration</label>
+              <div className="centerRow">
+                <DurationPicker onChange={handleDurationChange} initialDuration={{hours:0, minutes:5, seconds:0}} maxHours={24} required></DurationPicker>
+              </div>
 
               <br></br>
               <label className="popupHeader">Maximum Participants</label>
-              <input
-                type="number"
-                onChange={e => setMaxNum(e.target.value)}
-                value={maxNum}
-                min={minParticipants.toString()}
-                required
-              ></input>
-
-              <br></br>
-              <input
-                type="checkbox"
-                value="yes"
-                name="joinAsMember"
-                id="joinAsMember"
-              ></input>
-              <label htmlFor="joinAsMember">Join as Participant</label>
+              <div className="centerRow">
+                <input
+                  className="maxMemberInput"
+                  type="number"
+                  onChange={e => setMaxNum(e.target.value)}
+                  value={maxNum}
+                  min={minParticipants.toString()}
+                  required
+                ></input>
+                <br></br>
+                <input
+                  type="checkbox"
+                  value="yes"
+                  name="joinAsMember"
+                  id="joinAsMember"
+                ></input>
+                <label htmlFor="joinAsMember">Join as Participant</label>
+              </div>
           </form>
           </div>
           
@@ -151,17 +152,5 @@ const AddActivityPopup = () => {
     </Popup>
   );
 };
-
-/* TODO extract to common?
-AddActivityPopup.propTypes = {
-  name: PropTypes.string,
-  description: PropTypes.string,
-  startTime: PropTypes.string,
-  creationTime: PropTypes.string,
-  duration: PropTypes.string,
-  maxMembers: PropTypes.number,
-  owner: PropTypes.number,
-  members: PropTypes.array,
-};  */
 
 export default AddActivityPopup;
