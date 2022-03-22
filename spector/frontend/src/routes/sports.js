@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import "css/sports.css";
 import ActivityPopup from "../components/common/activityPopup";
 
 const Sports = () => {
+  const [, reloadActivities] = useState(null);
+
   let { sportName } = useParams();
 
   const { isLoaded, data, message } = useFetch(
@@ -29,7 +31,7 @@ const Sports = () => {
             Events...
             {data.map((item, index) => (
               <li key={index}>
-                <ActivityPopup {...item} />
+                <ActivityPopup reloadActivities={reloadActivities} {...item} />
               </li>
             ))}
           </ul>
