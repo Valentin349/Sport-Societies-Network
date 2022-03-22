@@ -14,6 +14,41 @@ const ActivityPopup = (props) => {
     props.members.includes(userID)
   );
 
+  const [isOwner, setIsOwner] = useState(
+    () => parseInt(props.owner) == parseInt(userID) || parseInt(userID) == 1
+  );
+
+  const handleDeleteClick = () => {
+    console.log("call");
+    const token = sessionStorage.getItem("token");
+
+    let headers = new Headers([
+      ["Content-Type", "application/json"],
+      ["Authorization", `Token ${token}`],
+    ]);
+
+    let body;
+    if (isOwner) {
+      fetch(`/api/activities/${props.id}/`, {
+        method: "DELETE",
+        body: JSON.stringify(body),
+        headers: headers,
+      })
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            setIsLoaded(true);
+            setData(result);
+            setIsMember((isMember) => !isMember);
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+            console.log(error);
+          }
+        );
+    }
+  };
   const HandleClick = () => {
     const token = sessionStorage.getItem("token");
 
@@ -97,6 +132,12 @@ const ActivityPopup = (props) => {
               onClick={HandleClick}
             >
               {isMember ? "Leave" : "Join"}
+            </button>
+            <button
+              className={isOwner ? "button" : "deleteButtonNotOwner"}
+              onClick={handleDeleteClick}
+            >
+              Delete Activity
             </button>
           </div>
         </div>
