@@ -26,7 +26,9 @@
   transition: all 0.3s;
   /* width: 150%; */
 }
-
+.deleteButtonNotOwner {
+  display: none;
+}
 .buttonJoined {
   color: #000000;
   cursor: pointer;
@@ -45,7 +47,6 @@
   border-radius: 15px 15px 15px 15px;
   transition: all 0.3s;
   width: 100%;
- 
 }
 .button:hover,
 .button.hover {
