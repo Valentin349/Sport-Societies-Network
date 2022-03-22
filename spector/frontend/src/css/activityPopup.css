@@ -27,6 +27,26 @@
   width: 100%;
 }
 
+.buttonJoined {
+  color: #000000;
+  cursor: pointer;
+  padding: 0px 30px;
+  display: inline-block;
+  margin: 5px 0px;
+  /*text-align: left;*/
+  line-height: 2em;
+  letter-spacing: 1.5px;
+  font-size: 1em;
+  outline: none;
+  position: relative;
+  font-size: 14px;
+  border: 2px solid #aa99ff;
+  background-color: #ff0000;
+  border-radius: 15px 15px 15px 15px;
+  transition: all 0.3s;
+  width: 100%;
+ 
+}
 .button:hover,
 .button.hover {
   border-color: #2980b9;
