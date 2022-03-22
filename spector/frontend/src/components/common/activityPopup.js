@@ -1,41 +1,37 @@
-import React, { useDebugValue } from "react";
+import React from "react";
 import Popup from "reactjs-popup";
 import "css/activityPopup.css";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const ActivityPopup = (props) => {
-  //props.dateTime is in the ISO format in UTC (Z)
-  //So display the time in the users timezone (toLocale)
-  //When posting to the api use ISO
-  const [isActive, setActive] = useState("false");
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([]);
 
-  const checkMember = () => {
-    let userId = sessionStorage.getItem("userID");
-    console.log(userId);
-    console.log(props.members);
-    if (props.members.includes(parseInt(userId))) {
-      setActive(false);
-    }
-  };
+  const userID = parseInt(sessionStorage.getItem("userID"));
+  const [isMember, setIsMember] = useState(() =>
+    props.members.includes(userID)
+  );
 
-  const JoinEvent = () => {
-    setActive(!isActive);
+  const HandleClick = () => {
+    const token = sessionStorage.getItem("token");
 
-    let userId = sessionStorage.getItem("userID");
-    let token = sessionStorage.getItem("token");
     let headers = new Headers([
       ["Content-Type", "application/json"],
       ["Authorization", `Token ${token}`],
     ]);
-    var body;
-    //get will get the members field to check for membership before writing to it
+
+    let body;
+    if (isMember) {
+      body = { members: props.members.filter((id) => id != userID) };
+    } else {
+      props.members.push(userID);
+      body = { members: props.members };
+    }
+
     fetch(`/api/activities/${props.id}/`, {
-      method: "GET",
+      method: "PATCH",
       body: JSON.stringify(body),
       headers: headers,
     })
@@ -44,41 +40,20 @@ const ActivityPopup = (props) => {
         (result) => {
           setIsLoaded(true);
           setData(result);
-          console.log(result.members);
-          let newMember = result.members;
-          if (result.members.includes(parseInt(userId))) {
-            newMember = newMember.filter((item) => item != parseInt(userId));
-          } else {
-            newMember.push(userId);
-          }
-
-          body = {
-            members: newMember,
-          };
-          console.log(body);
-          fetch(`/api/activities/${props.id}/`, {
-            method: "PATCH",
-            body: JSON.stringify(body),
-            headers: headers,
-          })
-            .then((res) => res.json())
-            .then(
-              (result) => {
-                setIsLoaded(true);
-                setData(result);
-              },
-              (error) => {
-                setIsLoaded(true);
-                setError(error);
-              }
-            );
+          setIsMember((isMember) => !isMember);
         },
         (error) => {
           setIsLoaded(true);
           setError(error);
+          console.log(error);
         }
       );
+
+    // Changing a state variable of sports.js to reload the component
+    // Means don't need to toggle isMember because setIsMember will be run on reload
+    props.reloadActivities({});
   };
+
   return (
     <Popup
       trigger={
@@ -88,7 +63,6 @@ const ActivityPopup = (props) => {
           {props.duration}
         </button>
       }
-      onOpen={checkMember}
       modal
     >
       {(close) => (
@@ -119,11 +93,10 @@ const ActivityPopup = (props) => {
           </div>
           <div className="actions">
             <button
-              className={isActive ? "button" : "buttonJoined"}
-              onClick={JoinEvent}
-              onLoad={checkMember}
+              className={isMember ? "buttonJoined" : "button"}
+              onClick={HandleClick}
             >
-              {isActive ? "Join" : "Leave"}
+              {isMember ? "Leave" : "Join"}
             </button>
           </div>
         </div>
@@ -133,15 +106,19 @@ const ActivityPopup = (props) => {
 };
 
 ActivityPopup.propTypes = {
+  id: PropTypes.number,
+  members: PropTypes.array,
+  membersName: PropTypes.array,
+  owner: PropTypes.number,
+  ownerName: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
   startTime: PropTypes.string,
   creationTime: PropTypes.string,
   duration: PropTypes.string,
   maxMembers: PropTypes.number,
-  owner: PropTypes.number,
-  members: PropTypes.array,
-  id: PropTypes.number,
+  sport: PropTypes.string,
+  reloadActivities: PropTypes.func,
 };
 
 export default ActivityPopup;
