@@ -9,6 +9,7 @@ import SportsList from "./routes/sportsList";
 import Sports from "./routes/sports";
 import Profile from "./routes/profile";
 import ProtectedRoute from "./ProtectedRoute";
+import "./css/components/forms.css"
 
 // react renderer
 ReactDOM.render(
