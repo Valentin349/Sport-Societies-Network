@@ -6,7 +6,37 @@ import { useState } from "react";
 
 const ActivityPopup = (props) => {
   const userID = parseInt(sessionStorage.getItem("userID"));
+
   const [isMember, setIsMember] = useState(props.members.includes(userID));
+
+  const [isOwner, setIsOwner] = useState(
+    () => parseInt(props.owner) == parseInt(userID) || parseInt(userID) == 1
+  );
+
+  const HandleDelete = () => {
+    const token = sessionStorage.getItem("token");
+
+    let headers = new Headers([
+      ["Content-Type", "application/json"],
+      ["Authorization", `Token ${token}`],
+    ]);
+
+    if (isOwner) {
+      fetch(`/api/activities/${props.id}/`, {
+        method: "DELETE",
+        headers: headers,
+      })
+        .then((res) => res.text())
+        .then(
+          (result) => {
+            console.log(result ? JSON.parse(result) : "Success");
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    }
+  };
 
   const HandleMembership = () => {
     props.HandleMembership(isMember, props.index);
@@ -56,6 +86,12 @@ const ActivityPopup = (props) => {
               disabled={props.members.length >= props.maxMembers && !isMember}
             >
               {isMember ? "Leave" : "Join"}
+            </button>
+            <button
+              className={isOwner ? "button" : "deleteButtonNotOwner"}
+              onClick={HandleDelete}
+            >
+              Delete Activity
             </button>
           </div>
         </div>
