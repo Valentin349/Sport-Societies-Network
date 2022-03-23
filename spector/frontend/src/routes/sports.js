@@ -5,9 +5,46 @@ import "css/sports.css";
 import ActivityPopup from "../components/common/activityPopup";
 
 const Sports = () => {
-  const [, reloadActivities] = useState(null);
-
   let { sportName } = useParams();
+  const [, refresh] = useState();
+
+  const HandleMembership = (isMember, index) => {
+    let activity = data[index];
+    const token = sessionStorage.getItem("token");
+    const userID = parseInt(sessionStorage.getItem("userID"));
+
+    let headers = new Headers([
+      ["Content-Type", "application/json"],
+      ["Authorization", `Token ${token}`],
+    ]);
+
+    if (isMember) {
+      activity.members = activity.members.filter((id) => id != userID);
+    } else {
+      activity.members.push(userID);
+    }
+    let body = { members: activity.members };
+
+    fetch(`/api/activities/${activity.id}/`, {
+      method: "PATCH",
+      body: JSON.stringify(body),
+      headers: headers,
+    })
+      .then(async (res) => {
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(text);
+        }
+
+        return res.json();
+      })
+      .then(() => {
+        refresh({});
+      })
+      .catch((error) => {
+        console.log(JSON.parse(error.message));
+      });
+  };
 
   const { isLoaded, data, message } = useFetch(
     `/api/activities/?sport=${sportName}`
@@ -31,7 +68,11 @@ const Sports = () => {
             Events...
             {data.map((item, index) => (
               <li key={index}>
-                <ActivityPopup reloadActivities={reloadActivities} {...item} />
+                <ActivityPopup
+                  HandleMembership={HandleMembership}
+                  index={index}
+                  {...item}
+                />
               </li>
             ))}
           </ul>

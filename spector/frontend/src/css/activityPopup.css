@@ -26,8 +26,11 @@
   transition: all 0.3s;
   width: 100%;
 }
+.button:disabled {
+  background-color: grey;
+}
 
-.buttonJoined {
+.leaveButton {
   color: #000000;
   cursor: pointer;
   padding: 0px 30px;
@@ -40,12 +43,11 @@
   outline: none;
   position: relative;
   font-size: 14px;
-  border: 2px solid #aa99ff;
-  background-color: #ff0000;
+  border: 2px solid #ff0000;
+  /* background-color: #ff0000; */
   border-radius: 15px 15px 15px 15px;
   transition: all 0.3s;
   width: 100%;
- 
 }
 .button:hover,
 .button.hover {
