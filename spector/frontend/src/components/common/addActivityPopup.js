@@ -166,9 +166,7 @@ const AddActivityPopup = (props) => {
           </div>
 
           <div className="actions">
-            <button type="submit" className="buttonJoin" form="activityForm">
-              Add
-            </button>
+            <input type="submit" form="activityForm"></input>
           </div>
         </div>
       )}
