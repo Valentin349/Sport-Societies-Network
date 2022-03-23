@@ -5,14 +5,9 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 
 const ActivityPopup = (props) => {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [data, setData] = useState([]);
-
   const userID = parseInt(sessionStorage.getItem("userID"));
-  const [isMember, setIsMember] = useState(() =>
-    props.members.includes(userID)
-  );
+
+  const [isMember, setIsMember] = useState(props.members.includes(userID));
 
   const [isOwner, setIsOwner] = useState(
     () => parseInt(props.owner) == parseInt(userID) || parseInt(userID) == 1
@@ -42,51 +37,16 @@ const ActivityPopup = (props) => {
         );
     }
   };
-  const HandleClick = () => {
-    const token = sessionStorage.getItem("token");
 
-    let headers = new Headers([
-      ["Content-Type", "application/json"],
-      ["Authorization", `Token ${token}`],
-    ]);
-
-    let body;
-    if (isMember) {
-      body = { members: props.members.filter((id) => id != userID) };
-    } else {
-      props.members.push(userID);
-      body = { members: props.members };
-    }
-
-    fetch(`/api/activities/${props.id}/`, {
-      method: "PATCH",
-      body: JSON.stringify(body),
-      headers: headers,
-    })
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setData(result);
-          setIsMember((isMember) => !isMember);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-          console.log(error);
-        }
-      );
-
-    // Changing a state variable of sports.js to reload the component
-    // Means don't need to toggle isMember because setIsMember will be run on reload
-    props.reloadActivities({});
+  const HandleMembership = () => {
+    props.HandleMembership(isMember, props.index);
+    setIsMember((isMember) => !isMember);
   };
 
   return (
     <Popup
       trigger={
         <button className="button">
-          {/* {props.name} */}
           {props.name} || {new Date(props.startTime).toLocaleString()} ||{" "}
           {props.duration}
         </button>
@@ -121,8 +81,9 @@ const ActivityPopup = (props) => {
           </div>
           <div className="actions">
             <button
-              className={isMember ? "buttonJoined" : "button"}
-              onClick={HandleClick}
+              className={isMember ? "leaveButton" : "button"}
+              onClick={() => HandleMembership()}
+              disabled={props.members.length >= props.maxMembers && !isMember}
             >
               {isMember ? "Leave" : "Join"}
             </button>
@@ -152,7 +113,8 @@ ActivityPopup.propTypes = {
   duration: PropTypes.string,
   maxMembers: PropTypes.number,
   sport: PropTypes.string,
-  reloadActivities: PropTypes.func,
+  HandleMembership: PropTypes.func,
+  index: PropTypes.number,
 };
 
 export default ActivityPopup;
