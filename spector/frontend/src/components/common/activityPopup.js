@@ -18,8 +18,7 @@ const ActivityPopup = (props) => {
     () => parseInt(props.owner) == parseInt(userID) || parseInt(userID) == 1
   );
 
-  const handleDeleteClick = () => {
-    console.log("call");
+  const HandleDelete = () => {
     const token = sessionStorage.getItem("token");
 
     let headers = new Headers([
@@ -27,23 +26,17 @@ const ActivityPopup = (props) => {
       ["Authorization", `Token ${token}`],
     ]);
 
-    let body;
     if (isOwner) {
       fetch(`/api/activities/${props.id}/`, {
         method: "DELETE",
-        body: JSON.stringify(body),
         headers: headers,
       })
-        .then((res) => res.json())
+        .then((res) => res.text())
         .then(
           (result) => {
-            setIsLoaded(true);
-            setData(result);
-            setIsMember((isMember) => !isMember);
+            console.log(result ? JSON.parse(result) : "Success");
           },
           (error) => {
-            setIsLoaded(true);
-            setError(error);
             console.log(error);
           }
         );
@@ -136,7 +129,7 @@ const ActivityPopup = (props) => {
             </button>
             <button
               className={isOwner ? "button" : "deleteButtonNotOwner"}
-              onClick={handleDeleteClick}
+              onClick={HandleDelete}
             >
               Delete Activity
             </button>
