@@ -10,5 +10,7 @@ class AdminAuthor_elseReadonly(permissions.BasePermission):
             return True
         if request.user.is_authenticated and request.method in permissions.SAFE_METHODS:
             return True
+        if request.user.is_authenticated and request.method == "PATCH":
+            return True
         return obj.owner == request.user
         
