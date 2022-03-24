@@ -48,6 +48,7 @@ const Sports = () => {
       })
       .catch((error) => {
         console.log(JSON.parse(error.message));
+        window.location.reload();
       });
   };
 
