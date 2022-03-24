@@ -12,6 +12,7 @@ import ProtectedRoute from "./ProtectedRoute";
 
 // react renderer
 ReactDOM.render(
+  
   <BrowserRouter>
     <Routes>
       <Route path="/login" element={<SignInSignUp />} />
@@ -20,7 +21,7 @@ ReactDOM.render(
         <Route path="/" element={<Home />} />
         <Route path="sports" element={<SportsList />} />
         <Route path="sports/:sportName" element={<Sports />} />
-        <Route path="profile/:username" element={<Profile />} />
+        <Route path="profile/:userID" element={<Profile />} />
       </Route>
 
       <Route
