@@ -8,9 +8,14 @@ const Sports = () => {
   let { sportName } = useParams();
   const [, refresh] = useState();
 
+  const token = sessionStorage.getItem("token");
+  let headers = new Headers([
+    ["Content-Type", "application/json"],
+    ["Authorization", `Token ${token}`],
+  ]);
+
   const HandleMembership = (isMember, index) => {
     let activity = data[index];
-    const token = sessionStorage.getItem("token");
     const userID = parseInt(sessionStorage.getItem("userID"));
 
     let headers = new Headers([
@@ -46,6 +51,27 @@ const Sports = () => {
       });
   };
 
+  const HandleDelete = (isOwner, index) => {
+    let activity = data[index];
+
+    if (isOwner) {
+      fetch(`/api/activities/${activity.id}/`, {
+        method: "DELETE",
+        headers: headers,
+      })
+        .then((res) => res.text())
+        .then(
+          (result) => {
+            console.log(result ? JSON.parse(result) : "Success");
+            refresh({});
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    }
+  };
+
   const { isLoaded, data, message } = useFetch(
     `/api/activities/?sport=${sportName}`
   );
@@ -70,6 +96,7 @@ const Sports = () => {
               <li key={index}>
                 <ActivityPopup
                   HandleMembership={HandleMembership}
+                  HandleDelete={HandleDelete}
                   index={index}
                   {...item}
                 />

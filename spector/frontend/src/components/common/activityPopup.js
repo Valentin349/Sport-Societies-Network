@@ -8,6 +8,15 @@ const ActivityPopup = (props) => {
   const userID = parseInt(sessionStorage.getItem("userID"));
   const [isMember, setIsMember] = useState(props.members.includes(userID));
 
+  const [isOwner] = useState(
+    parseInt(props.owner) == parseInt(userID) || parseInt(userID) == 1
+  );
+
+  const HandleDelete = () => {
+    props.HandleDelete(isOwner, props.index);
+    window.location.reload();
+  };
+
   const HandleMembership = () => {
     props.HandleMembership(isMember, props.index);
     setIsMember((isMember) => !isMember);
@@ -85,6 +94,7 @@ ActivityPopup.propTypes = {
   maxMembers: PropTypes.number,
   sport: PropTypes.string,
   HandleMembership: PropTypes.func,
+  HandleDelete: PropTypes.func,
   index: PropTypes.number,
 };
 
