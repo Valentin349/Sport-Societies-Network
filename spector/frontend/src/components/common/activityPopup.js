@@ -9,33 +9,13 @@ const ActivityPopup = (props) => {
 
   const [isMember, setIsMember] = useState(props.members.includes(userID));
 
-  const [isOwner, setIsOwner] = useState(
-    () => parseInt(props.owner) == parseInt(userID) || parseInt(userID) == 1
+  const [isOwner] = useState(
+    parseInt(props.owner) == parseInt(userID) || parseInt(userID) == 1
   );
 
   const HandleDelete = () => {
-    const token = sessionStorage.getItem("token");
-
-    let headers = new Headers([
-      ["Content-Type", "application/json"],
-      ["Authorization", `Token ${token}`],
-    ]);
-
-    if (isOwner) {
-      fetch(`/api/activities/${props.id}/`, {
-        method: "DELETE",
-        headers: headers,
-      })
-        .then((res) => res.text())
-        .then(
-          (result) => {
-            console.log(result ? JSON.parse(result) : "Success");
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-    }
+    props.HandleDelete(isOwner, props.index);
+    window.location.reload();
   };
 
   const HandleMembership = () => {
@@ -114,6 +94,7 @@ ActivityPopup.propTypes = {
   maxMembers: PropTypes.number,
   sport: PropTypes.string,
   HandleMembership: PropTypes.func,
+  HandleDelete: PropTypes.func,
   index: PropTypes.number,
 };
 
