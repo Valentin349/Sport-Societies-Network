@@ -1,0 +1,25 @@
+.SignUpLayout {
+  position: fixed;
+  background-color: #bfb3ff;
+  border-radius: 27px;
+  outline: 2px ridge #bfb3ff;
+  top: 50%;
+  left: 50%;
+  /* margin-top: -50px;
+      margin-left: -100px; */
+  width: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.SignUpTitle {
+  color: white;
+  font-size: 35px;
+  text-align: center;
+}
+
+.signUpError {
+  color: red;
+  margin: 5%;
+  margin-top: 0%;
+  transform: translate(0%, -100%);
+}

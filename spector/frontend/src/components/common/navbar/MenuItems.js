@@ -6,7 +6,7 @@ export const MenuItems = [
   },
   {
     title: "Sports",
-    url: "sports",
+    url: "/sports",
     cName: "NavBar-Links",
   },
 ];

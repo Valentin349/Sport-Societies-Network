@@ -1,19 +1,34 @@
 import React from "react";
 import Popup from "reactjs-popup";
+import "css/components/popup.css"
 import "css/activityPopup.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const ActivityPopup = (props) => {
-  //props.dateTime is in the ISO format in UTC (Z)
-  //So display the time in the users timezone (toLocale)
-  //When posting to the api use ISO
+  const userID = parseInt(sessionStorage.getItem("userID"));
+
+  const [isMember, setIsMember] = useState(props.members.includes(userID));
+
+  const [isOwner] = useState(
+    parseInt(props.owner) == parseInt(userID) || parseInt(userID) == 1
+  );
+
+  const HandleDelete = () => {
+    props.HandleDelete(isOwner, props.index);
+    window.location.reload();
+  };
+
+  const HandleMembership = () => {
+    props.HandleMembership(isMember, props.index);
+    setIsMember((isMember) => !isMember);
+  };
 
   return (
     <Popup
       trigger={
         <button className="button">
-          {/* {props.name} */}
           {props.name} || {new Date(props.startTime).toLocaleString()} ||{" "}
           {props.duration}
         </button>
@@ -48,7 +63,19 @@ const ActivityPopup = (props) => {
             {props.creationTime}
           </div>
           <div className="actions">
-            <button className="button">Join</button>
+            <button
+              className={isMember ? "leaveButton" : "button"}
+              onClick={() => HandleMembership()}
+              disabled={props.members.length >= props.maxMembers && !isMember}
+            >
+              {isMember ? "Leave" : "Join"}
+            </button>
+            <button
+              className={isOwner ? "button" : "deleteButtonNotOwner"}
+              onClick={HandleDelete}
+            >
+              Delete Activity
+            </button>
             <Popup
               trigger={<button className="button"> 3/4 </button>}
               on="hover"
@@ -69,14 +96,21 @@ const ActivityPopup = (props) => {
 };
 
 ActivityPopup.propTypes = {
+  id: PropTypes.number,
+  members: PropTypes.array,
+  membersName: PropTypes.array,
+  owner: PropTypes.number,
+  ownerName: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
   startTime: PropTypes.string,
   creationTime: PropTypes.string,
   duration: PropTypes.string,
   maxMembers: PropTypes.number,
-  owner: PropTypes.number,
-  members: PropTypes.array,
+  sport: PropTypes.string,
+  HandleMembership: PropTypes.func,
+  HandleDelete: PropTypes.func,
+  index: PropTypes.number,
 };
 
 export default ActivityPopup;
