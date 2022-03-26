@@ -1,5 +1,6 @@
 import React, { useDebugValue } from "react";
 import Popup from "reactjs-popup";
+import "css/components/popup.css"
 import "css/activityPopup.css";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";

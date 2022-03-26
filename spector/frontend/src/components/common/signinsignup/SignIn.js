@@ -49,23 +49,31 @@ const SignIn = () => {
 
       <form onSubmit={handleSubmit}>
         <label>Enter username</label>
+        <div className="centerRow">
         <input
           type="text"
           required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        </div>
 
+        <br></br>
         <label>Enter Password</label>
+        <div className="centerRow">
         <input
           type="password"
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        </div>
+
         <p className="signInError">{signInError.non_field_errors}</p>
 
+        <div className="centerRow">
         <input type="submit" />
+        </div>
       </form>
     </div>
   );
