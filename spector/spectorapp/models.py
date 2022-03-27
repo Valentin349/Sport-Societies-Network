@@ -8,8 +8,8 @@ from datetime import timedelta
 
 # Create your models here.
 class Profile(models.Model):
-    name = models.CharField(max_length=30)
-    bio = models.CharField(max_length=100)
+    name = models.CharField(max_length=30, default="Full Name")
+    bio = models.CharField(max_length=100, default="Bio")
     age = models.IntegerField(default=18)
     owner = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     def __str__(self):
