@@ -19,7 +19,6 @@ class ActivitySerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         
-        
         instance.name = validated_data.get("name", instance.name)
         
         instance.description = validated_data.get("description", instance.description)
@@ -27,35 +26,33 @@ class ActivitySerializer(serializers.ModelSerializer):
         instance.duration = validated_data.get("duration", instance.duration)
         instance.maxMembers = validated_data.get("maxMembers", instance.maxMembers)
 
-        if instance.maxMembers < len(validated_data.get("members", instance.members)):
-            raise serializers.ValidationError("number of members is over max member limit")
-        else:
-            newelements = UserSerializer(validated_data.get("members", instance.members), many=True).data
-            oldelements = UserSerializer(instance.members, many=True).data
-            #add case, makes sure new list is +1 in size, other elements are same
-            #new list is in form (old list + n)
-            if len(oldelements)+1 == len(newelements):
-                for x,y in zip(oldelements, newelements):
-                    if x!=y:
-                        raise serializers.ValidationError("Database Desynch, Please Refresh")
-                instance.members.set(validated_data.get("members", instance.members))
-            ##remove case makes sure new list is -1 in size, elements are same or shifted by 1
-            elif len(oldelements)-1 == len(newelements):
-                for x in range(len(newelements)):
-                    if oldelements[x] != newelements[x]:
-                        if oldelements[x+1] != newelements[x]:
-                            raise serializers.ValidationError("Database Desynch, Please Refresh")
-                instance.members.set(validated_data.get("members", instance.members))
-
-
+        try:
+            if instance.maxMembers < len(validated_data.get("members", instance.members)):
+                raise serializers.ValidationError("number of members is over max member limit")
             else:
-                raise serializers.ValidationError("Database Desynch, Please Refresh")
+                newelements = UserSerializer(validated_data.get("members", instance.members), many=True).data
+                oldelements = UserSerializer(instance.members, many=True).data
+                #add case, makes sure new list is +1 in size, other elements are same
+                #new list is in form (old list + n)
+                if len(oldelements)+1 == len(newelements):
+                    for x,y in zip(oldelements, newelements):
+                        if x!=y:
+                            raise serializers.ValidationError("Database Desynch, Please Refresh")
+                    instance.members.set(validated_data.get("members", instance.members))
+                ##remove case makes sure new list is -1 in size, elements are same or shifted by 1
+                elif len(oldelements)-1 == len(newelements):
+                    for x in range(len(newelements)):
+                        if oldelements[x] != newelements[x]:
+                            if oldelements[x+1] != newelements[x]:
+                                raise serializers.ValidationError("Database Desynch, Please Refresh")
+                    instance.members.set(validated_data.get("members", instance.members))
 
 
-                
-          
-    
-        
+                else:
+                    raise serializers.ValidationError("Database Desynch, Please Refresh")
+        except TypeError:
+            pass
+
         instance.save()
         return instance
 
