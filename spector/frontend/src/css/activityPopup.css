@@ -1,19 +1,9 @@
-/* .example-warper { */
-/*   width: 100%; */
-/*   padding: 20px 5%; */
-/*   display: flex; */
-/*   justify-content: space-around; */
-/*   flex-wrap: wrap; */
-/*   border: 1px #cfcece dashed; */
-/* } */
-
-.button {
+.activityButton {
   color: #000000;
   cursor: pointer;
   padding: 0px 30px;
   display: inline-block;
   margin: 5px 0px;
-  /*text-align: left;*/
   line-height: 2em;
   letter-spacing: 1.5px;
   font-size: 1em;
@@ -24,37 +14,51 @@
   background-color: #ffffff;
   border-radius: 15px 15px 15px 15px;
   transition: all 0.3s;
-  /* width: 150%; */
-}
-.deleteButtonNotOwner {
-  display: none;
-}
-.button:disabled {
-  background-color: grey;
+  width: 100%;
 }
 
-.leaveButton {
+.actionButton {
   color: #000000;
   cursor: pointer;
   padding: 0px 30px;
-  display: inline-block;
-  margin: 5px 0px;
-  /*text-align: left;*/
+  margin: 10px 10px;
   line-height: 2em;
   letter-spacing: 1.5px;
   font-size: 1em;
   outline: none;
   position: relative;
   font-size: 14px;
-  border: 2px solid #ff0000;
-  /* background-color: #ff0000; */
+  border: 2px solid #aa99ff;
   border-radius: 15px 15px 15px 15px;
   transition: all 0.3s;
-  width: 100%;
+  display: inline-block;
+  width: 30%;
 }
-.button:hover,
-.button.hover {
+.actionButton:disabled {
+  background-color: grey;
+}
+
+.leaveButton {
+  border: 2px solid #ff0000;
+}
+
+.actionButton:hover,
+.popupButton:hover {
   border-color: #2980b9;
+}
+
+.participantCount {
+  font-size: 20px;
+  float: right;
+  margin-top: 15px;
+  text-decoration: underline;
+  text-decoration-color: grey;
+  text-underline-offset: 5px;
+}
+
+.participantLink {
+  color: black;
+  /* text-decoration: none; */
 }
 
 .card {

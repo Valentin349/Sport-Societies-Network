@@ -1,7 +1,8 @@
 import React from "react";
 import Popup from "reactjs-popup";
-import "css/components/popup.css"
+import "css/components/popup.css";
 import "css/activityPopup.css";
+import "css/components/tooltipPopup.css";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
@@ -26,7 +27,7 @@ const ActivityPopup = (props) => {
   return (
     <Popup
       trigger={
-        <button className="button">
+        <button className="activityButton">
           {props.name} || {new Date(props.startTime).toLocaleString()} ||{" "}
           {props.duration}
         </button>
@@ -62,18 +63,35 @@ const ActivityPopup = (props) => {
           </div>
           <div className="actions">
             <button
-              className={isMember ? "leaveButton" : "button"}
+              className={isMember ? "actionButton leaveButton" : "actionButton"}
               onClick={() => HandleMembership()}
               disabled={props.members.length >= props.maxMembers && !isMember}
             >
               {isMember ? "Leave" : "Join"}
             </button>
-            <button
-              className={isOwner ? "button" : "deleteButtonNotOwner"}
-              onClick={HandleDelete}
+            {isOwner && (
+              <button className="actionButton" onClick={HandleDelete}>
+                Delete Activity
+              </button>
+            )}
+            <Popup
+              trigger={
+                <span className="participantCount">
+                  {props.members.length} / {props.maxMembers}
+                </span>
+              }
+              on="hover"
+              position="right center"
+              className="participant"
             >
-              Delete Activity
-            </button>
+              {props.members.map((user, index) => (
+                <ul key={index}>
+                  <Link className="participantLink" to={`/profile/${user}`}>
+                    {props.membersName[index]}
+                  </Link>
+                </ul>
+              ))}
+            </Popup>
           </div>
         </div>
       )}
