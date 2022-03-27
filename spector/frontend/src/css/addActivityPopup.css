@@ -1,9 +1,8 @@
-.buttonAdd, .buttonJoin{
+.buttonAdd {
   cursor: pointer;
   padding: 0px 30px;
   display: inline-block;
   margin: 5px 0px;
-  /*text-align: left;*/
   line-height: 2em;
   letter-spacing: 1.5px;
   font-size: 1em;
@@ -25,20 +24,13 @@
   text-align: center;
 }
 
-.buttonJoin {
-  border: 2px solid #aa99ff;
-  background-color: #ffffff;
-  width: 25%;
-  color: #000000;
-}
-
-.buttonAdd:hover,
-.buttonAdd.hover {
+.buttonAdd:hover {
   border-color: #2980b9;
 }
 
 .titleBox {
-    box-sizing:border-box;
-    width: 100%;
-    text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
 }
+
