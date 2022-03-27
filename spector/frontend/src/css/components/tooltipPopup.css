@@ -1,0 +1,21 @@
+/* Participant Tooltip popup styling */
+.participant-content {
+  margin: auto;
+  background: rgb(191, 179, 255);
+  width: 50%;
+  padding: 5px;
+}
+.participant-arrow {
+  color: rgb(191, 179, 255);
+}
+[role="tooltip"].participant-content {
+  width: 200px;
+  box-shadow: rgba(191, 179, 255, 0.16) 0px 0px 3px;
+}
+
+.participant-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup="tooltip"].participant-overlay {
+  background: transparent;
+}

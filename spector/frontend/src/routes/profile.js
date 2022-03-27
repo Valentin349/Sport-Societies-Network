@@ -15,7 +15,7 @@ const Profile = () => {
 
   return (
     <div className="Profile-Items">
-      <h2 className="Profile-Title"> Profile Page</h2>
+      <h2 className="Profile-Title">{data.name}</h2>
       <ul className="Profile-PageLayout">
         <li>
           <ul className="Profile-IndividualBox">
