@@ -6,7 +6,7 @@ import ActivityPopup from "../components/common/activityPopup";
 const Home = () => {
   const [, refresh] = useState();
 
-  let userID = sessionStorage.getItem("userID");
+  const userID = parseInt(sessionStorage.getItem("userID"));
   const token = sessionStorage.getItem("token");
   let headers = new Headers([
     ["Content-Type", "application/json"],
@@ -15,7 +15,7 @@ const Home = () => {
 
   const HandleMembership = (isMember, index) => {
     let activity = data[index];
-    const userID = parseInt(sessionStorage.getItem("userID"));
+    const username = sessionStorage.getItem("username");
 
     let headers = new Headers([
       ["Content-Type", "application/json"],
@@ -24,8 +24,12 @@ const Home = () => {
 
     if (isMember) {
       activity.members = activity.members.filter((id) => id != userID);
+      activity.membersName = activity.membersName.filter(
+        (name) => name != username
+      );
     } else {
       activity.members.push(userID);
+      activity.membersName.push(username);
     }
     let body = { members: activity.members };
 
