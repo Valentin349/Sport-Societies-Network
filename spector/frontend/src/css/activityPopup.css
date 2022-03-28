@@ -1,5 +1,4 @@
 .activityButton {
-  /* grid-area: main; */
   color: #000000;
   cursor: pointer;
   padding: 0px 30px;
@@ -17,24 +16,11 @@
   transition: all 0.3s;
   width: 100%;
 }
-
 .activityButton:hover {
   color: white;
-  cursor: pointer;
-  padding: 0px 30px;
-  display: inline-block;
-  margin: 5px 0px;
   margin-left: 2.5%;
-  line-height: 2em;
-  letter-spacing: 1.5px;
-  font-size: 1em;
-  outline: none;
-  position: relative;
-  font-size: 14px;
   border: 2px solid #9580ff;
   background-color: #bfb3ff;
-  border-radius: 15px 15px 15px 15px;
-  transition: all 0.3s;
   width: 95%;
 }
 
@@ -59,13 +45,16 @@
   background-color: grey;
 }
 
-.leaveButton {
-  border: 2px solid #ff0000;
-}
-
 .actionButton:hover,
 .popupButton:hover {
   border-color: #2980b9;
+}
+
+.leaveButton {
+  border: 2px solid #ff0000;
+}
+.leaveButton:hover {
+  border-color: #b0170c;
 }
 
 .participantCount {
@@ -79,7 +68,6 @@
 
 .participantLink {
   color: black;
-  /* text-decoration: none; */
 }
 
 .card {
