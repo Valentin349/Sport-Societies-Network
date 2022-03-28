@@ -1,0 +1,36 @@
+.buttonAdd {
+  cursor: pointer;
+  padding: 0px 30px;
+  display: inline-block;
+  margin: 5px 0px;
+  line-height: 2em;
+  letter-spacing: 1.5px;
+  font-size: 1em;
+  outline: none;
+  position: relative;
+  font-size: 14px;
+  background-color: #bfb3ff;
+  outline: 2px solid white;
+  border-radius: 20px;
+  color: white;
+  border-radius: 15px 15px 15px 15px;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.maxMemberInput {
+  margin-right: 1vw;
+  width: 20%;
+  text-align: center;
+}
+
+.buttonAdd:hover {
+  border-color: #2980b9;
+}
+
+.titleBox {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+}
+

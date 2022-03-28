@@ -1,4 +1,4 @@
-.SportPageItems {
+.Profile-Items {
   background-color: whitesmoke;
   padding-top: 5px;
   padding-bottom: 20px;
@@ -7,13 +7,13 @@
   outline: 2px ridge #bfb3ff;
 }
 
-.socSportPageTitle {
+.Profile-Title {
   margin-left: 30px;
   color: #aa80ff;
   font-size: 30px;
 }
 
-.socPageLayout {
+.Profile-PageLayout {
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-gap: 0px 10px;
@@ -21,7 +21,7 @@
   padding-right: 40px;
 }
 
-.socIndividualBox {
+.Profile-IndividualBox {
   padding: 10px;
   font-size: 25px;
   background-color: white;
@@ -30,3 +30,4 @@
   color: #aa99ff;
   list-style: none;
 }
+

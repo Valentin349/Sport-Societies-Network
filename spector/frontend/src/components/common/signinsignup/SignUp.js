@@ -50,33 +50,41 @@ const SignUp = () => {
 
       <form onSubmit={handleSubmit}>
         <label>Enter email</label>
+        <div className="centerRow">
         <input
           type="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        </div>
         <p className="signUpError"> {signUpError.email}</p>
 
         <label>Enter username</label>
+        <div className="centerRow">
         <input
           type="text"
           required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        </div>
         <p className="signUpError"> {signUpError.username}</p>
 
         <label>Enter Password</label>
+        <div className="centerRow">
         <input
           type="password"
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        </div>
         <p className="signUpError"> {signUpError.password}</p>
 
+        <div className="centerRow">
         <input type="submit" />
+        </div>
       </form>
     </div>
   );
