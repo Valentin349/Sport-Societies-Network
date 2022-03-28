@@ -57,16 +57,22 @@ const ActivityPopup = (props) => {
             {props.description}
             <br />
             <br />
+{/* 
+            <p className="title">Attendance: </p>
+            {props.members} / {props.maxMembers}
+            <br />
+            <br /> */}
             
             <p className="title">Creation Time: </p>
             {new Date(props.creationTime).toUTCString()}
             <br />
             <br />
 
-            <i>{"Attendance: "}</i> {props.members} / {props.maxMembers}
+
+            {/* <i>{"Attendance: "}</i> {props.members} / {props.maxMembers}
             <br />
             <br />
-            <i>{"Creation time: "}</i> {props.creationTime}
+            <i>{"Creation time: "}</i> {props.creationTime} */}
 
           </div>
           <div className="actions">

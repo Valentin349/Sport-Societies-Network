@@ -15,13 +15,19 @@
 
 .socPageLayout {
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  /* grid-template-columns: repeat(2, auto); */
   grid-gap: 0px 10px;
   list-style: none;
   padding-right: 40px;
 }
 
 .socIndividualBox {
+  /* display: grid;
+  /* grid-template-columns: repeat(2, auto); */
+  /* grid-template-areas:
+    1
+    1/1; */
+
   padding: 10px;
   font-size: 25px;
   background-color: white;
