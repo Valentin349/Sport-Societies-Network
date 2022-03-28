@@ -9,6 +9,11 @@ import { useState } from "react";
 
 const ActivityPopup = (props) => {
   const userID = parseInt(sessionStorage.getItem("userID"));
+  const creationTime = new Date(props.creationTime);
+  const startTime = new Date(props.startTime);
+  const duration = props.duration.split(":");
+  const hrs = parseInt(duration[0]);
+  const mins = parseInt(duration[1]);
 
   const [isMember, setIsMember] = useState(props.members.includes(userID));
 
@@ -45,37 +50,33 @@ const ActivityPopup = (props) => {
           </a>
           <div className="header">{props.name}</div>
           <div className="content">
-          <p className="title">Date: </p>
-            {new Date(props.startTime).toDateString()}
+            <p className="title">When? </p>
+            {startTime.toLocaleDateString()} {" at "}
+            {startTime.toLocaleTimeString([], {
+              hour: "numeric",
+              hour12: true,
+              minute: "2-digit",
+            })}{" "}
             <br />
             <br />
-
-            <p className="title">Time: </p>
-            {new Date(props.startTime).toLocaleTimeString()}
+            <p className="title">Duration: </p>
+            {hrs}hr{hrs == 1 ? " " : "s "}
+            {mins}min{mins == 1 ? "" : "s"}
             <br />
             <br />
-
             <p className="title">Description: </p>
             {props.description}
             <br />
             <br />
-{/* 
-            <p className="title">Attendance: </p>
-            {props.members} / {props.maxMembers}
-            <br />
-            <br /> */}
-            
             <p className="title">Creation Time: </p>
-            {new Date(props.creationTime).toUTCString()}
+            Created by{" "}
+            <Link className="participantLink" to={`/profile/${props.owner}`}>
+              {props.ownerName}
+            </Link>{" "}
+            on {creationTime.toLocaleDateString()} at{" "}
+            {creationTime.toLocaleTimeString()}
             <br />
             <br />
-
-
-            {/* <i>{"Attendance: "}</i> {props.members} / {props.maxMembers}
-            <br />
-            <br />
-            <i>{"Creation time: "}</i> {props.creationTime} */}
-
           </div>
           <div className="actions">
             <button
@@ -97,6 +98,7 @@ const ActivityPopup = (props) => {
                 </span>
               }
               on="hover"
+              disabled={props.members.length == 0}
               position="right center"
               className="participant"
             >
