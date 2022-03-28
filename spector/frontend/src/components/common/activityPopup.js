@@ -30,7 +30,9 @@ const ActivityPopup = (props) => {
     <Popup
       trigger={
         <button className="activityButton">
-          <b>{props.name}</b> <br /> {new Date(props.startTime).toLocaleString()} || {props.members} / {props.maxMembers}
+          <b>{props.name}</b> <br />{" "}
+          {new Date(props.startTime).toLocaleString()} || {props.members.length}{" "}
+          / {props.maxMembers}
         </button>
       }
       modal
