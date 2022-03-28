@@ -13,8 +13,7 @@ const ActivityPopup = (props) => {
       trigger={
         <button className="button">
           {/* {props.name} */}
-          {props.name} || {new Date(props.startTime).toLocaleString()} ||{" "}
-          {props.duration}
+          <b>{props.name}</b> <br /> {new Date(props.startTime).toLocaleString()} || {props.members} / {props.maxMembers}
         </button>
       }
       modal
@@ -26,24 +25,14 @@ const ActivityPopup = (props) => {
           </a>
           <div className="header">{props.name}</div>
           <div className="content">
-            {props.description}
+            <i>{"Location: "}</i> {props.description}
             <br />
-            {props.startTime}
+            <i>{"Date and time: "}</i> {new Date(props.startTime).toUTCString()}
             <br />
-            {new Date(props.startTime).toUTCString()}
-            <br />
-            {new Date(props.startTime).toDateString()}
-            <br />
-            {new Date(props.startTime).toTimeString()}
-            <br />
-            {new Date(props.startTime).toLocaleString()}
-            <br />
-            {new Date(props.startTime).toLocaleDateString()}
-            <br />
-            {new Date(props.startTime).toLocaleTimeString()}
+            <i>{"Attendance: "}</i> {props.members} / {props.maxMembers}
             <br />
             <br />
-            {props.creationTime}
+            <i>{"Creation time: "}</i> {props.creationTime}
           </div>
           <div className="actions">
             <button className="button">Join</button>
