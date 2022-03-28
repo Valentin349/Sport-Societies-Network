@@ -43,14 +43,38 @@ const ActivityPopup = (props) => {
           </a>
           <div className="header">{props.name}</div>
           <div className="content">
-            <i>{"Location: "}</i> {props.description}
+          <p className="title">Date: </p>
+            {new Date(props.startTime).toDateString()}
+            <br />
+            <br />
+
+            <p className="title">Time: </p>
+            {new Date(props.startTime).toLocaleTimeString()}
+            <br />
+            <br />
+
+            <p className="title">Description: </p>
+            {props.description}
+            <br />
+            <br />
+            
+            <p className="title">Creation Time: </p>
+            {new Date(props.creationTime).toUTCString()}
+            <br />
+            <br />
+
+            {/* {props.startTime}
+            <br />
+            {new Date(props.startTime).toUTCString()}
+            <br />
+            {new Date(props.startTime).toTimeString()}
             <br />
             <i>{"Date and time: "}</i> {new Date(props.startTime).toUTCString()}
             <br />
-            <i>{"Attendance: "}</i> {props.members} / {props.maxMembers}
-            <br />
-            <br />
-            <i>{"Creation time: "}</i> {props.creationTime}
+            {new Date(props.startTime).toLocaleDateString()}
+            <br /> */}
+            
+            
           </div>
           <div className="actions">
             <button

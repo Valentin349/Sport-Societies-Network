@@ -10,7 +10,7 @@ const SignInSignUp = () => {
   return (
     <div className="signInSignUpPage">
       {!signin ? <SignIn /> : <SignUp />}
-      <Button onClick={() => setSignin((s) => !s)}>Sign In/Sign Up</Button>
+      <Button className="toggleButton" onClick={() => setSignin((s) => !s)}>Sign In/Sign Up</Button>
     </div>
   );
 };
