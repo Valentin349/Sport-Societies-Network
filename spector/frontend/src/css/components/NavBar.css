@@ -1,5 +1,5 @@
-.NavBar-Items{
-  background: linear-gradient(90deg, #BB99FF 0%, #BFB3FF 100%);
+.NavBar-Items {
+  background: linear-gradient(90deg, #bb99ff 0%, #bfb3ff 100%);
   height: 80px;
   width: 100%;
   border-radius: 27px;
@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-  outline: 2px ridge #AA80FF;
+  outline: 2px ridge #aa80ff;
 }
 
 .navbar-logo {
@@ -15,12 +15,12 @@
   text-decoration: none;
   padding: 1rem 0.5rem;
   font-size: 80px;
-  font-family: 'Palanquin Dark';
+  font-family: "Palanquin Dark";
 }
 
 .NavBar-Menu {
   display: grid;
-  grid-template-columns: repeat(3,auto);
+  grid-template-columns: repeat(3, auto);
   grid-gap: 20px;
   list-style: none;
   text-align: center;
@@ -36,7 +36,7 @@
 }
 
 .NavBar-Links:hover {
-  background-color: #CCD4FF;
+  background-color: #ccd4ff;
   height: 10px;
   border-radius: 15px;
   transition: all 0.2s ease-out;
