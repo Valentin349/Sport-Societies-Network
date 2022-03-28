@@ -18,8 +18,8 @@ const Profile = () => {
 
   const HandleMembership = (isMember, index) => {
     let activity = data.activities[index];
-    console.log(activity);
     const userID = parseInt(sessionStorage.getItem("userID"));
+    const username = sessionStorage.getItem("username");
 
     let headers = new Headers([
       ["Content-Type", "application/json"],
@@ -28,8 +28,12 @@ const Profile = () => {
 
     if (isMember) {
       activity.members = activity.members.filter((id) => id != userID);
+      activity.membersName = activity.membersName.filter(
+        (name) => name != username
+      );
     } else {
       activity.members.push(userID);
+      activity.membersName.push(username);
     }
     let body = { members: activity.members };
 
