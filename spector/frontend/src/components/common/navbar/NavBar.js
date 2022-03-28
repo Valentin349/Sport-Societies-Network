@@ -3,8 +3,19 @@ import { NavLink, Outlet } from "react-router-dom";
 import Button from "../button";
 import { MenuItems } from "./MenuItems";
 import "css/components/NavBar.css";
+import { useNavigate } from 'react-router';
+
 
 const NavBar = () => {
+
+  let navigate = useNavigate();
+  let userID = sessionStorage.getItem("userID")// Retrieve userID with this
+
+
+  function handleClick() {
+    navigate('/profile/' + userID)
+  }
+
   return (
     <>
       <nav className="NavBar-Items">
@@ -18,7 +29,7 @@ const NavBar = () => {
             </li>
           ))}
         </ul>
-        <Button>Profile</Button>
+        <Button onClick={handleClick} > Profile</Button>
       </nav>
       <Outlet />
     </>

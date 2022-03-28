@@ -1,19 +1,9 @@
-/* .example-warper { */
-/*   width: 100%; */
-/*   padding: 20px 5%; */
-/*   display: flex; */
-/*   justify-content: space-around; */
-/*   flex-wrap: wrap; */
-/*   border: 1px #cfcece dashed; */
-/* } */
-
-.button {
+.activityButton {
   color: #000000;
   cursor: pointer;
   padding: 0px 30px;
   display: inline-block;
   margin: 5px 0px;
-  /*text-align: left;*/
   line-height: 2em;
   letter-spacing: 1.5px;
   font-size: 1em;
@@ -27,13 +17,11 @@
   width: 100%;
 }
 
-.buttonJoined {
+.actionButton {
   color: #000000;
   cursor: pointer;
   padding: 0px 30px;
-  display: inline-block;
-  margin: 5px 0px;
-  /*text-align: left;*/
+  margin: 10px 10px;
   line-height: 2em;
   letter-spacing: 1.5px;
   font-size: 1em;
@@ -41,14 +29,36 @@
   position: relative;
   font-size: 14px;
   border: 2px solid #aa99ff;
-  background-color: #ff0000;
   border-radius: 15px 15px 15px 15px;
   transition: all 0.3s;
-  width: 100%;
+  display: inline-block;
+  width: 30%;
 }
-.button:hover,
-.button.hover {
+.actionButton:disabled {
+  background-color: grey;
+}
+
+.leaveButton {
+  border: 2px solid #ff0000;
+}
+
+.actionButton:hover,
+.popupButton:hover {
   border-color: #2980b9;
+}
+
+.participantCount {
+  font-size: 20px;
+  float: right;
+  margin-top: 15px;
+  text-decoration: underline;
+  text-decoration-color: grey;
+  text-underline-offset: 5px;
+}
+
+.participantLink {
+  color: black;
+  /* text-decoration: none; */
 }
 
 .card {
@@ -60,76 +70,10 @@
   font-size: 14px;
   text-align: center;
 }
-
-.popup-content {
-  margin: auto;
-  background: rgb(255, 255, 255);
-  width: 50%;
-  /* padding: 5px; */
-  border-radius: 15px;
-}
-.popup-arrow {
-  color: rgb(255, 255, 255);
-}
-[role="tooltip"].popup-content {
-  width: 200px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
-}
-
-.popup-overlay {
-  background: rgba(0, 0, 0, 0.5);
-}
-[data-popup="tooltip"].popup-overlay {
-  background: transparent;
-}
-
-.modal {
-  font-size: 12px;
-  /* padding: 15px; */
-  padding: 15px 15px 5px 15px;
-  margin: center;
-}
-.modal > .header {
-  width: 100%;
-  border-bottom: 1px solid gray;
-  font-size: 30px;
-  text-align: center;
-  color: #aa80ff;
-  font-weight: bold;
-  padding: 5px 1px;
-}
-.modal > .content {
-  width: 100%;
-  font-size: 18px;
-  padding: 10px 1px;
-}
-.modal > .actions {
-  margin: auto;
-  text-align: center;
-}
 .modal > .content > .title {
   color: #aa80ff;
   font-weight: bold;
   font-size: 20px;
-}
-
-/* X close button */
-.modal > .close {
-  cursor: pointer;
-  position: absolute;
-  display: block;
-  padding: 2px 5px;
-  line-height: 20px;
-  right: -10px;
-  top: -10px;
-  font-size: 24px;
-  background: #ffffff;
-  border-radius: 18px;
-  border: 2px solid #aa99ff;
-  transition: all 0.3s;
-}
-.modal > .close:hover {
-  border-color: #2980b9;
 }
 
 .menu {
