@@ -73,7 +73,11 @@ const ActivityPopup = (props) => {
               {props.ownerName}
             </Link>{" "}
             on {creationTime.toLocaleDateString()} at{" "}
-            {creationTime.toLocaleTimeString()}
+            {creationTime.toLocaleTimeString([], {
+              hour: "numeric",
+              hour12: true,
+              minute: "2-digit",
+            })}{" "}
             <br />
             <br />
           </div>
