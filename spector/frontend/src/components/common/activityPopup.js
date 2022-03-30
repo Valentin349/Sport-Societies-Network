@@ -13,6 +13,17 @@ const ActivityPopup = (props) => {
   const duration = props.duration.split(":");
   const hrs = parseInt(duration[0]);
   const mins = parseInt(duration[1]);
+  const dateOptions = {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  };
+  const timeOptions = {
+    hour: "numeric",
+    hour12: true,
+    minute: "2-digit",
+  };
 
   const [isMember, setIsMember] = useState(props.members.includes(userID));
 
@@ -50,12 +61,8 @@ const ActivityPopup = (props) => {
           <div className="header">{props.name}</div>
           <div className="content">
             <p className="title">When? </p>
-            {startTime.toLocaleDateString()} {" at "}
-            {startTime.toLocaleTimeString([], {
-              hour: "numeric",
-              hour12: true,
-              minute: "2-digit",
-            })}{" "}
+            {startTime.toLocaleDateString([], dateOptions)} {" at "}
+            {startTime.toLocaleTimeString([], timeOptions)}
             <br />
             <br />
             <p className="title">Duration: </p>
