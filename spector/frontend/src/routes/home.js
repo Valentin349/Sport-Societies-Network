@@ -14,7 +14,7 @@ const Home = () => {
   ]);
 
   const HandleMembership = (isMember, index) => {
-    let activity = data[index];
+    let activity = data.activities[index];
     const username = sessionStorage.getItem("username");
 
     let headers = new Headers([
@@ -56,7 +56,7 @@ const Home = () => {
   };
 
   const HandleDelete = (isOwner, index) => {
-    let activity = data[index];
+    let activity = data.activities[index];
 
     if (isOwner) {
       fetch(`/api/activities/${activity.id}/`, {
