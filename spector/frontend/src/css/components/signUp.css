@@ -19,7 +19,8 @@
 
 .signUpError {
   color: red;
-  margin: 5%;
-  margin-top: 0%;
+  margin-left: 5%;
+  margin-top: 5%;
   transform: translate(0%, -100%);
 }
+
