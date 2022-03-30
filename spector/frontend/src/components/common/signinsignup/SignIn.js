@@ -58,7 +58,7 @@ const SignIn = () => {
           />
         </div>
 
-        <br></br>
+        <br />
         <label>Enter Password</label>
         <div className="centerRow">
           <input
