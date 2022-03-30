@@ -9,6 +9,11 @@ import { useState } from "react";
 
 const ActivityPopup = (props) => {
   const userID = parseInt(sessionStorage.getItem("userID"));
+  const creationTime = new Date(props.creationTime);
+  const startTime = new Date(props.startTime);
+  const duration = props.duration.split(":");
+  const hrs = parseInt(duration[0]);
+  const mins = parseInt(duration[1]);
 
   const [isMember, setIsMember] = useState(props.members.includes(userID));
 
@@ -45,14 +50,33 @@ const ActivityPopup = (props) => {
           </a>
           <div className="header">{props.name}</div>
           <div className="content">
-            <i>{"Location: "}</i> {props.description}
+            <p className="title">When? </p>
+            {startTime.toLocaleDateString()} {" at "}
+            {startTime.toLocaleTimeString([], {
+              hour: "numeric",
+              hour12: true,
+              minute: "2-digit",
+            })}{" "}
             <br />
-            <i>{"Date and time: "}</i> {new Date(props.startTime).toUTCString()}
             <br />
-            <i>{"Attendance: "}</i> {props.members} / {props.maxMembers}
+            <p className="title">Duration: </p>
+            {hrs}hr{hrs == 1 ? " " : "s "}
+            {mins}min{mins == 1 ? "" : "s"}
             <br />
             <br />
-            <i>{"Creation time: "}</i> {props.creationTime}
+            <p className="title">Description: </p>
+            {props.description}
+            <br />
+            <br />
+            <p className="title">Creation Time: </p>
+            Created by{" "}
+            <Link className="participantLink" to={`/profile/${props.owner}`}>
+              {props.ownerName}
+            </Link>{" "}
+            on {creationTime.toLocaleDateString()} at{" "}
+            {creationTime.toLocaleTimeString()}
+            <br />
+            <br />
           </div>
           <div className="actions">
             <button
@@ -74,6 +98,7 @@ const ActivityPopup = (props) => {
                 </span>
               }
               on="hover"
+              disabled={props.members.length == 0}
               position="right center"
               className="participant"
             >
