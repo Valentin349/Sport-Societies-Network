@@ -14,17 +14,6 @@ const ActivityPopup = (props) => {
   const duration = props.duration.split(":");
   const hrs = parseInt(duration[0]);
   const mins = parseInt(duration[1]);
-  const dateOptions = {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  };
-  const timeOptions = {
-    hour: "numeric",
-    hour12: true,
-    minute: "2-digit",
-  };
 
   const [isMember, setIsMember] = useState(props.members.includes(userID));
 
@@ -46,9 +35,14 @@ const ActivityPopup = (props) => {
     <Popup
       trigger={
         <button className="activityButton">
-          <b>{props.name}</b> <br />{" "}
-          {new Date(props.startTime).toLocaleString()} || {props.members.length}{" "}
-          / {props.maxMembers}
+          <b>{props.name}</b>
+          <br />
+          {startTime.toLocaleString([], {
+            dateStyle: "medium",
+            timeStyle: "short",
+          })}
+          {" || "}
+          {props.members.length} / {props.maxMembers}
         </button>
       }
       modal
@@ -62,8 +56,10 @@ const ActivityPopup = (props) => {
           <div className="header">{props.name}</div>
           <div className="content">
             <p className="title">When? </p>
-            {startTime.toLocaleDateString([], dateOptions)} {" at "}
-            {startTime.toLocaleTimeString([], timeOptions)}
+            {startTime.toLocaleString([], {
+              dateStyle: "full",
+              timeStyle: "short",
+            })}
             <br />
             <br />
             <p className="title">Duration: </p>
@@ -80,12 +76,11 @@ const ActivityPopup = (props) => {
             <Link className="participantLink" to={`/profile/${props.owner}`}>
               {props.ownerName}
             </Link>{" "}
-            on {creationTime.toLocaleDateString()} at{" "}
-            {creationTime.toLocaleTimeString([], {
-              hour: "numeric",
-              hour12: true,
-              minute: "2-digit",
-            })}{" "}
+            on{" "}
+            {creationTime.toLocaleString([], {
+              dateStyle: "short",
+              timeStyle: "short",
+            })}
             <br />
             <br />
           </div>
