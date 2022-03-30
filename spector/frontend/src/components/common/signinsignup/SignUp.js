@@ -34,6 +34,24 @@ const SignUp = () => {
         sessionStorage.setItem("token", result.token);
         sessionStorage.setItem("userID", result.id);
         sessionStorage.setItem("username", username);
+
+        let headers = new Headers([
+          ["Content-Type", "application/json"],
+          ["Authorization", `Token ${result.token}`],
+        ]);
+
+        const jsonOut = {
+          owner: result.id,
+          name: username,
+          bio: "bio",
+          age: 18,
+        };
+
+        fetch("/api/profile/", {
+          method: "POST",
+          headers: headers,
+          body: JSON.stringify(jsonOut),
+        });
       })
       .then(() => {
         const prevPath = location.state?.from?.pathname || "/";
@@ -51,39 +69,39 @@ const SignUp = () => {
       <form onSubmit={handleSubmit}>
         <label>Enter email</label>
         <div className="centerRow">
-        <input
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         <p className="signUpError"> {signUpError.email}</p>
 
         <label>Enter username</label>
         <div className="centerRow">
-        <input
-          type="text"
-          required
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+          <input
+            type="text"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </div>
         <p className="signUpError"> {signUpError.username}</p>
 
         <label>Enter Password</label>
         <div className="centerRow">
-        <input
-          type="password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <input
+            type="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
         <p className="signUpError"> {signUpError.password}</p>
 
         <div className="centerRow">
-        <input type="submit" />
+          <input type="submit" />
         </div>
       </form>
     </div>
@@ -91,4 +109,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
