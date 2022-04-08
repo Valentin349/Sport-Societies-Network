@@ -2,6 +2,7 @@ from dataclasses import field
 import imp
 from pyexpat import model
 from rest_framework import serializers
+from rest_framework.validators import UniqueValidator
 from .models import Profile, Sports, Activity
 from django.contrib.auth.models import User
 
