@@ -8,6 +8,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase, force_authenticate, APIClient
 import datetime, json
 
+
 # Create your tests here.
 class ActivityTestCase(APITestCase):
     def setUp(self):
