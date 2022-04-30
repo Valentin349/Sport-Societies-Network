@@ -4,8 +4,10 @@
   width: 100%;
   border-radius: 27px;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: start;
   align-items: center;
+  column-gap: 10px;
   font-size: 1.2rem;
   outline: 2px ridge #aa80ff;
 }
@@ -16,25 +18,36 @@
   padding: 1rem 0.5rem;
   font-size: 80px;
   font-family: "Palanquin Dark";
+  margin-right: auto;
 }
 
-.NavBar-Menu {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-gap: 20px;
-  list-style: none;
-  text-align: center;
-  width: 75vw;
-  justify-content: end;
-  margin-right: 1rem;
+.NavBar-UserActivities {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+
+  font-size: 35px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #4a0443;
+  cursor: pointer;
+}
+.NavBar-UserActivities:hover {
+  background-color: #ccd4ff;
+  height: 10px;
+  border-radius: 15px;
+  transition: all 0.2s ease-out;
 }
 
+/* Options is a div container of sports and profile */
+.NavBar-Options {
+  margin-left: auto;
+}
+
+/* Styles any NavLinks */
 .NavBar-Links {
   color: white;
   text-decoration: none;
   padding: 0.5rem 1rem;
 }
-
 .NavBar-Links:hover {
   background-color: #ccd4ff;
   height: 10px;
@@ -45,4 +58,10 @@
 .active {
   text-decoration: underline 2px;
   text-underline-offset: 4px;
+}
+
+.NavBar-Activity-DropDown {
+  padding: 0px 10px 0px 10px;
+  list-style: none;
+  /* width: 500px; */
 }

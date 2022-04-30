@@ -4,10 +4,7 @@ import "css/components/popup.css";
 import "css/activityPopup.css";
 import "css/components/tooltipPopup.css";
 import PropTypes from "prop-types";
-<<<<<<< HEAD
-=======
 import { Link } from "react-router-dom";
->>>>>>> 7749115d43a2d34e1be62fa7bb57621e09361177
 import { useState } from "react";
 
 const ActivityPopup = (props) => {
@@ -76,7 +73,11 @@ const ActivityPopup = (props) => {
             <br />
             <p className="title">Creation Time: </p>
             Created by{" "}
-            <Link className="participantLink" to={`/profile/${props.owner}`}>
+            <Link
+              onClick={() => props.Close()}
+              className="participantLink"
+              to={`/profile/${props.owner}`}
+            >
               {props.ownerName}
             </Link>{" "}
             on{" "}
@@ -113,7 +114,11 @@ const ActivityPopup = (props) => {
             >
               {props.members.map((user, index) => (
                 <ul key={index}>
-                  <Link className="participantLink" to={`/profile/${user}`}>
+                  <Link
+                    onClick={() => props.Close()}
+                    className="participantLink"
+                    to={`/profile/${user}`}
+                  >
                     {props.membersName[index]}
                   </Link>
                 </ul>
@@ -141,6 +146,7 @@ ActivityPopup.propTypes = {
   sport: PropTypes.string,
   HandleMembership: PropTypes.func,
   HandleDelete: PropTypes.func,
+  Close: PropTypes.func,
   index: PropTypes.number,
 };
 
