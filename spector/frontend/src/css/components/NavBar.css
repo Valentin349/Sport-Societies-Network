@@ -39,6 +39,12 @@
   transition: all 0.2s ease-out;
 }
 
+.NavBar-NoActivities {
+  font-size: 25px;
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+}
+
 /* Options is a div container of sports and profile */
 .NavBar-Options {
   margin-left: auto;

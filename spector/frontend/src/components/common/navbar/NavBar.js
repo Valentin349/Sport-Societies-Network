@@ -106,19 +106,27 @@ const NavBar = () => {
             onOpen={() => test()}
           >
             {(close) => (
-              <ul className="NavBar-Activity-DropDown">
-                {data.activities?.map((item, index) => (
-                  <li key={index}>
-                    <ActivityPopup
-                      HandleMembership={HandleMembership}
-                      HandleDelete={HandleDelete}
-                      Close={close}
-                      index={index}
-                      {...item}
-                    />
-                  </li>
-                ))}
-              </ul>
+              <>
+                {data.activities?.length == 0 ? (
+                  <div className="NavBar-NoActivities">
+                    No joined activities
+                  </div>
+                ) : (
+                  <ul className="NavBar-Activity-DropDown">
+                    {data.activities?.map((item, index) => (
+                      <li key={index}>
+                        <ActivityPopup
+                          HandleMembership={HandleMembership}
+                          HandleDelete={HandleDelete}
+                          Close={close}
+                          index={index}
+                          {...item}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </>
             )}
           </Popup>
         </div>
