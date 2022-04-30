@@ -100,7 +100,8 @@ const NavBar = () => {
         <div>
           <Popup
             trigger={<span className="NavBar-UserActivities">{username}</span>}
-            modal
+            // modal
+            on={"hover"}
             nested
             onOpen={() => test()}
           >

@@ -29,11 +29,13 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: #4a0443;
   cursor: pointer;
+  border: 3px solid #8b13d1;
+  border-radius: 15px;
 }
 .NavBar-UserActivities:hover {
   background-color: #ccd4ff;
-  height: 10px;
-  border-radius: 15px;
+  /* height: 10px; */
+  /* border-radius: 15px; */
   transition: all 0.2s ease-out;
 }
 
