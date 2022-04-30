@@ -17,7 +17,7 @@ const SportsList = () => {
       <ul className="sportslist-menu">
         {data.map((item, index) => (
           <li key={index}>
-            <Link to={item.name} className="sportslist-links">
+            <Link to={`sports/${item.name}`} className="sportslist-links">
               {item.name}
             </Link>
           </li>

@@ -9,18 +9,18 @@ import SportsList from "./routes/sportsList";
 import Sports from "./routes/sports";
 import Profile from "./routes/profile";
 import ProtectedRoute from "./ProtectedRoute";
-import "./css/components/forms.css"
+import "./css/components/forms.css";
 
 // react renderer
 ReactDOM.render(
-  
   <BrowserRouter>
     <Routes>
       <Route path="/login" element={<SignInSignUp />} />
 
       <Route path="" element={<ProtectedRoute route={<NavBar />} />}>
-        <Route path="/" element={<Home />} />
-        <Route path="sports" element={<SportsList />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        {/* <Route path="sports" element={<SportsList />} /> */}
+        <Route path="/" element={<SportsList />} />
         <Route path="sports/:sportName" element={<Sports />} />
         <Route path="profile/:userID" element={<Profile />} />
       </Route>
