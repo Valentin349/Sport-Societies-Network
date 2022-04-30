@@ -38,12 +38,8 @@
   border: 2px solid #aa99ff;
   border-radius: 15px 15px 15px 15px;
   transition: all 0.3s;
-<<<<<<< HEAD
-  width: 100%;
-=======
   display: inline-block;
   width: 30%;
->>>>>>> 7749115d43a2d34e1be62fa7bb57621e09361177
 }
 .actionButton:disabled {
   background-color: grey;
@@ -76,17 +72,12 @@
 
 .card {
   font-size: 12px;
-<<<<<<< HEAD
-  /* padding: 15px; */
   padding: 15px 15px 5px 15px;
   margin: center;
-=======
->>>>>>> 7749115d43a2d34e1be62fa7bb57621e09361177
 }
 .card > .header {
   width: 100%;
   border-bottom: 1px solid gray;
-<<<<<<< HEAD
   font-size: 30px;
   text-align: center;
   color: #aa80ff;
@@ -100,9 +91,6 @@
 }
 .modal > .actions {
   margin: auto;
-=======
-  font-size: 14px;
->>>>>>> 7749115d43a2d34e1be62fa7bb57621e09361177
   text-align: center;
 }
 .modal > .header {

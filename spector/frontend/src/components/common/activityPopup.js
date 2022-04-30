@@ -4,10 +4,7 @@ import "css/components/popup.css";
 import "css/activityPopup.css";
 import "css/components/tooltipPopup.css";
 import PropTypes from "prop-types";
-<<<<<<< HEAD
-=======
 import { Link } from "react-router-dom";
->>>>>>> 7749115d43a2d34e1be62fa7bb57621e09361177
 import { useState } from "react";
 
 const ActivityPopup = (props) => {
